@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { navigate } from '../../../pages/node_modules/gatsby'
+import { navigate } from 'gatsby'
 import {
   REGISTER_USER,
   LOGOUT_USER,
@@ -175,9 +175,5 @@ export const validateToken = token => async dispatch => {
     })
   } catch (err) {
     console.log(err.response.data)
-    dispatch({
-      type: TOAST_ERROR,
-      payload: response.data,
-    })
   }
 }

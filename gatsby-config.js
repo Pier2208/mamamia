@@ -2,8 +2,8 @@ require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
-    title: `Banh Mi Co Kieu`,
-    description: `A Vietnamese Restaurant in Montreal.`,
+    title: `Mamamia Pizza`,
+    description: `The best pizza in town.`,
     author: `Pierrick Le Roy`,
   },
   plugins: [

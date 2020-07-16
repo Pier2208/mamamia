@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
-import { navigate } from '../../pages/node_modules/gatsby'
+import { navigate } from 'gatsby'
 
 const PrivateRoute = ({ component: Component, location, ...rest }) => {
   const user = useSelector(state => state.user)

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Link } from '../../../pages/node_modules/gatsby'
+import { Link } from 'gatsby'
 
 const Text = styled.small`
   margin: 1rem 0 0.5rem 0;

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
 import { loginWithFacebook } from '../../../redux/actions/userActions'
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
-import { FaFacebook } from '../../../constants/node_modules/react-icons/fa'
+import { FaFacebook } from 'react-icons/fa'
 
 const FacebookButton = styled.button`
   width: 70%;
@@ -50,3 +50,4 @@ const FacebookLoginButton = () => {
 }
 
 export default FacebookLoginButton
+

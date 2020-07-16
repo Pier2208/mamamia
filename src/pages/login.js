@@ -7,7 +7,7 @@ import Layout from '../components/Layout'
 import LoginForm from '../components/Forms/LoginForm'
 import Hero from '../components/Hero'
 import SEO from '../components/seo'
-import { navigate } from '../redux/actions/node_modules/gatsby'
+import { navigate } from 'gatsby'
 
 const Grid = styled.div`
   display: grid;

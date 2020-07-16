@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { logoutUser } from '../../redux/actions/userActions'
-import { Link } from '../../pages/node_modules/gatsby'
+import { Link } from 'gatsby'
 import styled from 'styled-components'
 
 import Logo from './Logo'
