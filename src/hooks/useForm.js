@@ -6,8 +6,6 @@ const useForm = (initialValues, formLogic, validate) => {
   const [isSubmitting, setSubmitting] = useState(false)
   const [touched, setTouched] = useState([])
 
-  console.log(errors)
-
   // run only if the form is submitted
   useEffect(() => {
     if (isSubmitting) {
