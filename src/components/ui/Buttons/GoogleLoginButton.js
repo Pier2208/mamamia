@@ -37,7 +37,7 @@ const GoogleLoginButton = () => {
 
   return (
     <GoogleLogin
-      clientId="734224202894-783a4d8pk7s6oat4gko4ddhf7fpvapgq.apps.googleusercontent.com"
+      clientId="417885791533-kiipu269pbif9f1if39vlfhfbgbg5lc0.apps.googleusercontent.com"
       onSuccess={responseGoogle}
       onFailure={responseGoogle}
       cookiePolicy={'single_host_origin'}
