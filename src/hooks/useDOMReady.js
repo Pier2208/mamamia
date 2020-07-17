@@ -3,4 +3,4 @@ const useDOMReady = () =>
   !!window.document &&
   !!window.document.createElement
 
-export default useDOMReady
+export default useDOMReady 
