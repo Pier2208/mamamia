@@ -6,8 +6,8 @@ import {
   SOCIAL_LOGIN,
   SET_CURRENT_USER,
   LOGIN_USER,
-  TOAST_SUCCESS,
-  TOAST_ERROR
+  SET_LOADING,
+  SHOW_TOAST,
 } from './types'
 
 export const registerUser = ({ email, password }) => async dispatch => {
@@ -25,6 +25,13 @@ export const registerUser = ({ email, password }) => async dispatch => {
     dispatch({
       type: REGISTER_USER,
       payload: response.data,
+    })
+    dispatch({
+      type: SHOW_TOAST,
+      payload: {
+        genre: 'success',
+        message: 'You are now logged in.',
+      },
     })
     navigate('/')
   } catch (err) {
@@ -44,6 +51,13 @@ export const logoutUser = () => async dispatch => {
     // dispatch action to reducer
     dispatch({
       type: LOGOUT_USER,
+    })
+    dispatch({
+      type: SHOW_TOAST,
+      payload: {
+        genre: 'success',
+        message: 'You are now logged out.',
+      },
     })
     navigate('/')
   } catch (err) {
@@ -66,6 +80,13 @@ export const loginWithGoogle = googleResponse => async dispatch => {
     dispatch({
       type: SOCIAL_LOGIN,
       payload: response.data,
+    })
+    dispatch({
+      type: SHOW_TOAST,
+      payload: {
+        genre: 'success',
+        message: 'You are now logged in.',
+      },
     })
     navigate('/')
   } catch (err) {
@@ -90,6 +111,13 @@ export const loginWithFacebook = facebookResponse => async dispatch => {
       type: SOCIAL_LOGIN,
       payload: response.data,
     })
+    dispatch({
+      type: SHOW_TOAST,
+      payload: {
+        genre: 'success',
+        message: 'You are now logged in.',
+      },
+    })
     navigate('/')
   } catch (err) {
     console.log(err)
@@ -112,6 +140,13 @@ export const loginUser = ({ email, password }) => async dispatch => {
       type: LOGIN_USER,
       payload: response.data,
     })
+    dispatch({
+      type: SHOW_TOAST,
+      payload: {
+        genre: 'success',
+        message: 'You are now logged in.',
+      },
+    })
     navigate('/')
   } catch (err) {
     console.log(err.response.data)
@@ -122,6 +157,10 @@ export const loginUser = ({ email, password }) => async dispatch => {
 export const getCurrentUser = () => async dispatch => {
   try {
     console.log('should run once')
+    dispatch({
+      type: SET_LOADING,
+      payload: true,
+    })
     const response = await axios({
       method: 'get',
       url: '/api/getCurrentUser',
@@ -131,9 +170,15 @@ export const getCurrentUser = () => async dispatch => {
       type: SET_CURRENT_USER,
       payload: response.data,
     })
+    dispatch({
+      type: SET_LOADING,
+      payload: false,
+    })
   } catch (err) {
-    console.log(err.response.data)
-    throw err.response.data.error
+    dispatch({
+      type: SET_LOADING,
+      payload: false,
+    })
   }
 }
 
@@ -148,10 +193,10 @@ export const forgotPassword = ({ email }) => async dispatch => {
       },
     })
     //then dispatch to userReducer
-    dispatch({
-      type: TOAST_SUCCESS,
-      payload: response.data,
-    })
+    // dispatch({
+    //   type: TOAST_SUCCESS,
+    //   payload: response.data,
+    // })
   } catch (err) {
     console.log(err.response.data)
     throw err.response.data.error
@@ -169,10 +214,10 @@ export const validateToken = token => async dispatch => {
       },
     })
     //then dispatch to userReducer
-    dispatch({
-      type: TOAST_SUCCESS,
-      payload: response.data,
-    })
+    // dispatch({
+    //   type: TOAST_SUCCESS,
+    //   payload: response.data,
+    // })
   } catch (err) {
     console.log(err.response.data)
   }

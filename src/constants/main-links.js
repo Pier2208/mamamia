@@ -1,5 +1,4 @@
 import React from 'react'
-import { FaUserCircle } from 'react-icons/fa'
 
 export default [
     {
@@ -16,11 +15,5 @@ export default [
         path: '/contact',
         name: 'Contact',
         private: false
-    },
-    {
-        path: '/account',
-        name: 'My Account',
-        private: true,
-        icon: <FaUserCircle />
     }
 ]

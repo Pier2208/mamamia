@@ -3,10 +3,10 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 
 import rootReducer from '../reducers'
-import useDOMReady from '../../hooks/useDOMReady'
+import isDOMReady from '../../hooks/useDOMReady'
 
 const devTools = () => {
-  if (useDOMReady()) {
+  if (isDOMReady()) {
     return (
       window.__REDUX_DEVTOOLS_EXTENSION__ &&
       window.__REDUX_DEVTOOLS_EXTENSION__()

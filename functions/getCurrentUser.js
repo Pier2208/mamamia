@@ -15,6 +15,8 @@ exports.handler = async (event, context) => {
     }
   }
 
+  //if cookie is invalid, it throws an error "unauthorized"
+
   // create a new fauna client
   const q = faunadb.query
   const client = new faunadb.Client({
@@ -24,12 +26,20 @@ exports.handler = async (event, context) => {
   try {
     // get user info
     // Identity() returns a ref associated with the authentication token
-    const {
-      data: { email },
-    } = await client.query(q.Get(q.Identity()))
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ user: { email }, isAuthenticated: true }),
+    const { data } = await client.query(q.Get(q.Identity()))
+    if (data) {
+      return {
+        statusCode: 200,
+        body: JSON.stringify({
+          user: { email: data.email },
+          isAuthenticated: true,
+        }),
+      }
+    } else {
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ user: {}, isAuthenticated: false }),
+      }
     }
   } catch (err) {
     return {

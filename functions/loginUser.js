@@ -33,7 +33,7 @@ exports.handler = async (event, context) => {
       },
       body: JSON.stringify({
         user: { email },
-        isAuthenticated: true,
+        isAuthenticated: true
       }),
     }
   } catch (err) {

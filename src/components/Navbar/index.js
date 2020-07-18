@@ -5,12 +5,12 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 
 import Logo from './Logo'
+import CircleLoader from '../ui/Spinner/CircleLoader'
 import HiddenCheckbox from './HiddenCheckbox'
 import Hamburger from './Hamburger'
 import Menu from './Menu'
 import Links from './Links'
 import mainLinks from '../../constants/main-links'
-import socialsLinks from '../../constants/social-links'
 import authLinks from '../../constants/auth-links'
 
 const Nav = styled.nav`
@@ -30,6 +30,8 @@ const Nav = styled.nav`
 const Navbar = () => {
   const navRef = useRef()
   const { isAuthenticated } = useSelector(state => state.user)
+  const { loading } = useSelector(state => state.ui)
+
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -70,42 +72,34 @@ const Navbar = () => {
             }
           })}
         </Links>
-        <Links>
-          {socialsLinks.map((link, i) => (
-            <a
-              key={i}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {link.icon}
-            </a>
-          ))}
-        </Links>
-        <Links mcol fromRight>
-          {authLinks.map((link, i) => {
-            if (isAuthenticated && link.private) {
-              if (link.name === 'Logout') {
+        {loading ? (
+          <CircleLoader />
+        ) : (
+          <Links mcol fromRight>
+            {authLinks.map((link, i) => {
+              if (isAuthenticated && link.private) {
+                if (link.name === 'Logout') {
+                  return (
+                    <Link key={i} to={link.path} onClick={logout}>
+                      {link.icon} {link.name}
+                    </Link>
+                  )
+                }
                 return (
-                  <Link key={i} to={link.path} onClick={logout}>
+                  <Link key={i} to={link.path}>
+                    {link.icon} {link.name}
+                  </Link>
+                )
+              } else if (!isAuthenticated && !link.private) {
+                return (
+                  <Link key={i} to={link.path}>
                     {link.icon} {link.name}
                   </Link>
                 )
               }
-              return (
-                <Link key={i} to={link.path}>
-                  {link.icon} {link.name}
-                </Link>
-              )
-            } else if (!isAuthenticated && !link.private) {
-              return (
-                <Link key={i} to={link.path}>
-                  {link.icon} {link.name}
-                </Link>
-              )
-            }
-          })}
-        </Links>
+            })}
+          </Links>
+        )}
       </Menu>
     </Nav>
   )

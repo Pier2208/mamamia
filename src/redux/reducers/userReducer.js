@@ -8,7 +8,7 @@ import {
   
   const INITIAL_STATE = {
     isAuthenticated: false,
-    email: '',
+    email: ''
   }
   
   export default (state = INITIAL_STATE, { type, payload }) => {
