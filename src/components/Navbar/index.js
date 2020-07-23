@@ -35,22 +35,20 @@ const Navbar = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (typeof window !== `undefined`) {
-      const getPos = () => {
-        let scrollPos = window.scrollY
-        if (scrollPos > 10) {
-          navRef.current.style.backgroundColor = 'rgba(255, 255, 255, 1)'
-          navRef.current.style.height = '2.5rem'
-        } else {
-          navRef.current.style.backgroundColor = 'rgba(255, 255, 255, 0)'
-          navRef.current.style.height = '3.5rem'
-        }
+    const getPos = () => {
+      let scrollPos = window.scrollY
+      if (scrollPos > 10) {
+        navRef.current.style.backgroundColor = 'rgba(255, 255, 255, 1)'
+        navRef.current.style.height = '2.5rem'
+      } else {
+        navRef.current.style.backgroundColor = 'rgba(255, 255, 255, 0)'
+        navRef.current.style.height = '3.5rem'
       }
-      window.addEventListener('scroll', getPos)
+    }
+    window.addEventListener('scroll', getPos)
 
-      return () => {
-        window.removeEventListener('scroll', getPos)
-      }
+    return () => {
+      window.removeEventListener('scroll', getPos)
     }
   }, [])
 
