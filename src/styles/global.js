@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Parisienne&display=swap');
     :root {
         box-sizing: border-box;
     }
@@ -14,7 +15,7 @@ export default createGlobalStyle`
     body {
         margin: 0;
         padding: 0;
-        font-family: "lato", sans-serif;
+        font-family: 'Open Sans', sans-serif;
         color: #000;
         background-color: #fff;
         line-height: 1.4;
@@ -35,7 +36,7 @@ export default createGlobalStyle`
     h4,
     h5,
     h6 {
-        font-family: "Karla", sans-serif;
+        font-family: 'Parisienne', cursive;
         letter-spacing: 4px;
         margin: 0;
         padding: 0;

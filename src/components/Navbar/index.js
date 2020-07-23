@@ -21,7 +21,7 @@ const Nav = styled.nav`
   z-index: 1111;
   display: flex;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(244, 244, 244, 0);
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1),
     -4px -4px 5px rgba(255, 255, 255, 0.6);
   transition: all 0.4s ease-out;
@@ -38,12 +38,11 @@ const Navbar = () => {
     const getPos = () => {
       let scrollPos = window.scrollY
       if (scrollPos > 10) {
-        navRef.current.style.backgroundColor = '#f4f4f4'
+        navRef.current.style.backgroundColor = 'rgba(255, 255, 255, 1)'
         navRef.current.style.height = '2.5rem'
       } else {
-        navRef.current.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'
+        navRef.current.style.backgroundColor = 'rgba(255, 255, 255, 0)'
         navRef.current.style.height = '3.5rem'
-        navRef.current.style.boxShadow = 'none'
       }
     }
     window.addEventListener('scroll', getPos)

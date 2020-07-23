@@ -4,9 +4,7 @@ import { useDispatch } from 'react-redux'
 import Form from '../../ui/Forms/Form'
 import FormInput from '../../ui/Forms/FormInput'
 import CustomButton from '../../ui/Buttons/CustomButton'
-import Card from '../../ui/Cards/Card'
-import CardHeader from '../../ui/Cards/CardHeader'
-import CardContent from '../../ui/Cards/CardContent'
+import Card from '../../ui/Card'
 import Spinner from '../../ui/Spinner/Square'
 import useForm from '../../../hooks/useForm'
 import resetPasswordFormValidate from './resetPasswordFormValidate'
@@ -37,8 +35,8 @@ const ResetPasswordForm = () => {
   return (
     <>
       <Card maxWidth="500px">
-        <CardHeader>Enter your new password</CardHeader>
-        <CardContent>
+        <Card.Header>Enter your new password</Card.Header>
+        <Card.Body>
           <Form onSubmit={handleFormSubmit} noValidate>
             <FormInput
               type="password"
@@ -62,7 +60,7 @@ const ResetPasswordForm = () => {
               Confirm
             </CustomButton>
           </Form>
-        </CardContent>
+        </Card.Body>
       </Card>
       {isSubmitting && <Spinner />}
     </>

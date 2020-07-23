@@ -5,9 +5,7 @@ import { forgotPassword } from '../../../redux/actions/userActions'
 import Form from '../../ui/Forms/Form'
 import FormInput from '../../ui/Forms/FormInput'
 import CustomButton from '../../ui/Buttons/CustomButton'
-import Card from '../../ui/Cards/Card'
-import CardHeader from '../../ui/Cards/CardHeader'
-import CardContent from '../../ui/Cards/CardContent'
+import Card from '../../ui/Card'
 import Small from '../../ui/Typography/Small'
 import MutedLink from '../../ui/Links/MutedLink'
 import Spinner from '../../ui/Spinner/Square'
@@ -40,11 +38,11 @@ const ForgotPasswordForm = () => {
   return (
     <>
       <Card maxWidth="500px">
-        <CardHeader>I Forgot My Password</CardHeader>
+        <Card.Header>I Forgot My Password</Card.Header>
         <Small>
           Enter your email, we will send you an email to reset your password.
         </Small>
-        <CardContent>
+        <Card.Body>
           <Form onSubmit={handleFormSubmit} noValidate>
             <FormInput
               type="email"
@@ -60,7 +58,7 @@ const ForgotPasswordForm = () => {
             </CustomButton>
             <MutedLink to="/login ">Back To Login</MutedLink>
           </Form>
-        </CardContent>
+        </Card.Body>
       </Card>
       {isSubmitting && <Spinner />}
     </>

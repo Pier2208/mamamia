@@ -5,10 +5,7 @@ import { registerUser } from '../../../redux/actions/userActions'
 import Form from '../../ui/Forms/Form'
 import FormInput from '../../ui/Forms/FormInput'
 import CustomButton from '../../ui/Buttons/CustomButton'
-import Card from '../../ui/Cards/Card'
-import CardHeader from '../../ui/Cards/CardHeader'
-import CardContent from '../../ui/Cards/CardContent'
-import CardFooter from '../../ui/Cards/CardFooter'
+import Card from '../../ui/Card'
 import Spinner from '../../ui/Spinner/Square'
 import useForm from '../../../hooks/useForm'
 import registerFormValidate from './registerFormValidate'
@@ -37,8 +34,8 @@ const RegisterForm = () => {
   return (
     <>
       <Card maxWidth="500px">
-        <CardHeader>Create an account</CardHeader>
-        <CardContent>
+        <Card.Header>Create an account</Card.Header>
+        <Card.Body>
           <Form onSubmit={handleFormSubmit} noValidate>
             <FormInput
               type="email"
@@ -71,11 +68,11 @@ const RegisterForm = () => {
               Create
             </CustomButton>
           </Form>
-        </CardContent>
-        <CardFooter>
+        </Card.Body>
+        <Card.Footer>
           <FacebookLoginButton />
           <GoogleLoginButton />
-        </CardFooter>
+        </Card.Footer>
       </Card>
       {isSubmitting && <Spinner />}
     </>

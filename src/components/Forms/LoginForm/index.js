@@ -5,10 +5,7 @@ import { loginUser } from '../../../redux/actions/userActions'
 import Form from '../../ui/Forms/Form'
 import FormInput from '../../ui/Forms/FormInput'
 import CustomButton from '../../ui/Buttons/CustomButton'
-import Card from '../../ui/Cards/Card'
-import CardHeader from '../../ui/Cards/CardHeader'
-import CardContent from '../../ui/Cards/CardContent'
-import CardFooter from '../../ui/Cards/CardFooter'
+import Card from '../../ui/Card'
 import MutedLink from '../../ui/Links/MutedLink'
 import Spinner from '../../ui/Spinner/Square'
 import useForm from '../../../hooks/useForm'
@@ -38,8 +35,8 @@ const LoginForm = () => {
   return (
     <>
       <Card maxWidth="500px">
-        <CardHeader>Welcome Back,</CardHeader>
-        <CardContent>
+        <Card.Header>Welcome Back,</Card.Header>
+        <Card.Body>
           <Form onSubmit={handleFormSubmit} noValidate>
             <FormInput
               type="email"
@@ -64,11 +61,11 @@ const LoginForm = () => {
             </CustomButton>
             <MutedLink to="/forgot-password">Forgot your password?</MutedLink>
           </Form>
-        </CardContent>
-        <CardFooter>
+        </Card.Body>
+        <Card.Footer>
           <FacebookLoginButton />
           <GoogleLoginButton />
-        </CardFooter>
+        </Card.Footer>
       </Card>
       {isSubmitting && <Spinner />}
     </>

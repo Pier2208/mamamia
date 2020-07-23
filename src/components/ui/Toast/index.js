@@ -36,6 +36,7 @@ const BaseToast = styled.div`
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
   opacity: 1;
   animation: ${fadeIn} 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 111;
 `
 
 const Toast = ({ children, genre }) => {
