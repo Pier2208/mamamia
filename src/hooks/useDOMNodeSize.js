@@ -2,21 +2,21 @@ import { useEffect, useState } from 'react'
 
 // this custom hook takes a DOM node
 const useDOMNodeSize = nodeRef => {
-  // a function that returns an object
-  const getDimensions = () => ({
-    width: nodeRef.current.offsetWidth,
-    height: nodeRef.current.offsetHeight,
-  })
+  if (typeof window !== `undefined`) {
+    // a function that returns an object
+    const getDimensions = () => ({
+      width: nodeRef.current.offsetWidth,
+      height: nodeRef.current.offsetHeight,
+    })
 
-  // we make use of the useState hook to keep track of the dimensions
-  // of the node
-  const [dimensions, setDimensions] = useState({
-    width: 0,
-    height: 0,
-  })
+    // we make use of the useState hook to keep track of the dimensions
+    // of the node
+    const [dimensions, setDimensions] = useState({
+      width: 0,
+      height: 0,
+    })
 
-  useEffect(() => {
-    if (typeof window !== `undefined`) {
+    useEffect(() => {
       const handleResize = () => {
         setDimensions(getDimensions())
       }
@@ -32,10 +32,10 @@ const useDOMNodeSize = nodeRef => {
       return () => {
         window.removeEventListener('resize', handleResize)
       }
-    }
-  }, [nodeRef])
+    }, [nodeRef])
 
-  return dimensions
+    return dimensions
+  }
 }
 
 export default useDOMNodeSize
