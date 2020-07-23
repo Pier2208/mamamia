@@ -16,20 +16,22 @@ const useDOMNodeSize = nodeRef => {
   })
 
   useEffect(() => {
-    const handleResize = () => {
-      setDimensions(getDimensions())
-    }
+    if (typeof window !== `undefined`) {
+      const handleResize = () => {
+        setDimensions(getDimensions())
+      }
 
-    // when the component mounts for the 1st time
-    if (nodeRef.current) {
-      setDimensions(getDimensions())
-    }
+      // when the component mounts for the 1st time
+      if (nodeRef.current) {
+        setDimensions(getDimensions())
+      }
 
-    // call handleResize each time the window is resized
-    window.addEventListener('resize', handleResize)
+      // call handleResize each time the window is resized
+      window.addEventListener('resize', handleResize)
 
-    return () => {
-      window.removeEventListener('resize', handleResize)
+      return () => {
+        window.removeEventListener('resize', handleResize)
+      }
     }
   }, [nodeRef])
 

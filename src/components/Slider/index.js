@@ -72,17 +72,19 @@ const Slider = ({ slides, sliderWidth, autoplay }) => {
   }
 
   useEffect(() => {
-    const handleKeyPress = event => {
-      if (event.keyCode === 190 || event.keyCode === 39) {
-        nextSlide()
-      } else if (event.keyCode === 188 || event.keyCode === 37) {
-        prevSlide()
+    if (typeof window !== `undefined`) {
+      const handleKeyPress = event => {
+        if (event.keyCode === 190 || event.keyCode === 39) {
+          nextSlide()
+        } else if (event.keyCode === 188 || event.keyCode === 37) {
+          prevSlide()
+        }
       }
-    }
-    window.addEventListener('keydown', handleKeyPress)
+      window.addEventListener('keydown', handleKeyPress)
 
-    return () => {
-      window.removeEventListener('keydown', handleKeyPress)
+      return () => {
+        window.removeEventListener('keydown', handleKeyPress)
+      }
     }
   }, [nextSlide, prevSlide])
 

@@ -13,7 +13,7 @@ const useInterval = (callback, delay) => {
     function tick() {
       savedCallback.current();
     }
-    if (delay !== null) {
+    if (delay !== null && typeof window !== `undefined`) {
       let interval = setInterval(tick, delay * 1000);
       return () => clearInterval(interval);
     }
