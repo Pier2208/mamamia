@@ -56,7 +56,7 @@ const LoginForm = () => {
               onBlur={handleBlur}
               error={errors && errors.password}
             />
-            <CustomButton type="submit" disabled={isSubmitting}>
+            <CustomButton type="submit" disabled={isSubmitting} uppercase>
               Log Me In
             </CustomButton>
             <MutedLink to="/forgot-password">Forgot your password?</MutedLink>

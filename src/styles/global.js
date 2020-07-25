@@ -35,7 +35,7 @@ export default createGlobalStyle`
     h4,
     h5,
     h6 {
-        font-family: 'Parisienne', cursive;
+        font-family: 'Open Sans', sans-serif;
         letter-spacing: 4px;
         margin: 0;
         padding: 0;

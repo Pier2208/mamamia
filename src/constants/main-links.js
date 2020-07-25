@@ -7,8 +7,8 @@ export default [
         private: false
     },
     {
-        path: '/menu',
-        name: 'Menu',
+        path: '/menu/pizza',
+        name: 'Our Menu',
         private: false
     },
     {

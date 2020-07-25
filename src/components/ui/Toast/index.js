@@ -54,7 +54,7 @@ const Toast = ({ children, genre }) => {
   return (
     <BaseToast genre={genre}>
       {children}
-      <IconButton onClick={closeToast}>
+      <IconButton onClick={closeToast} ariaLabel='close notification'>
         <AiOutlineClose />
       </IconButton>
     </BaseToast>

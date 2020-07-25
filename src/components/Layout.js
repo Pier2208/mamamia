@@ -6,6 +6,7 @@ import Theme from '../styles/theme'
 import Navbar from './Navbar'
 import Toast from './ui/Toast'
 
+
 const Layout = ({ children }) => {
   const { toast } = useSelector(state => state.ui)
   return (

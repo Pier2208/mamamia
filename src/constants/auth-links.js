@@ -1,5 +1,10 @@
 import React from 'react'
-import { AiOutlineLogin, AiOutlineLogout, AiOutlineUser } from 'react-icons/ai'
+import {
+  AiOutlineLogin,
+  AiOutlineLogout,
+  AiOutlineUser,
+  AiOutlineShoppingCart,
+} from 'react-icons/ai'
 
 export default [
   {
@@ -15,9 +20,15 @@ export default [
     icon: <AiOutlineUser />,
   },
   {
+    path: '/cart',
+    name: 'My Cart',
+    private: true,
+    icon: <AiOutlineShoppingCart />,
+  },
+  {
     path: '/',
     name: 'Logout',
     private: true,
     icon: <AiOutlineLogout />,
-  }
+  },
 ]

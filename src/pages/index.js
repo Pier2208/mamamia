@@ -26,8 +26,7 @@ const HeroSection = styled.section`
     [center-start] repeat(8, [col-start] minmax(min-content, 20rem) [col-end])
     [center-end]
     minmax(5rem, 1fr) [full-end];
-
-  margin-top: 3.5em;
+    margin-top: 3.5em;
 `
 
 const HeroSlider = styled.div`
