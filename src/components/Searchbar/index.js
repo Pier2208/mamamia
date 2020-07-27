@@ -16,8 +16,11 @@ const Container = styled.div`
 const MenuLinks = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  width: 35%;
+  justify-content: flex-start;
+  width: 70%;
+  > * {
+    margin-right: 1rem;
+  }
 `
 
 const Searchbar = ({ location }) => {
@@ -29,9 +32,9 @@ const Searchbar = ({ location }) => {
             <Link key={name} to={path}>
               <CustomButton
                 type="button"
-                round
                 uppercase
                 active={location.pathname.includes(name.toLowerCase())}
+                width='10rem'
               >
                 {name}
               </CustomButton>

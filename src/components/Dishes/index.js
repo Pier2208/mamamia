@@ -18,12 +18,14 @@ const GridItems = styled.div`
   margin: 2rem 0;
 `
 
-const Dishes = ({ dishes }) => {
+const Dishes = ({ dishes, location }) => {
   return (
     <Grid>
       <GridItems>
         {dishes &&
-          dishes.map(({ node: dish }) => <Dish key={dish.id} data={dish} />)}
+          dishes.map(({ node: dish }) => (
+            <Dish key={dish.id} dish={dish} location={location.pathname} />
+          ))}
       </GridItems>
     </Grid>
   )

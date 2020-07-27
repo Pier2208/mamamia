@@ -10,6 +10,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           }
         }
       }
+      dishes: allContentfulDish {
+        edges {
+          node {
+            slug
+            category {
+              name
+            }
+          }
+        }
+      }
     }
   `)
 
@@ -18,6 +28,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   const categories = result.data.categories.edges
+  const dishes = result.data.dishes.edges
 
   categories.forEach(({ node: category }) => {
     createPage({
@@ -25,6 +36,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       component: require.resolve('./src/templates/category-template.js'),
       context: {
         category: category.name,
+      },
+    })
+  })
+
+  dishes.forEach(({ node: dish }) => {
+    createPage({
+      path: `/menu/${dish.category.name}/${dish.slug}`,
+      component: require.resolve('./src/templates/dish-template.js'),
+      context: {
+        slug: dish.slug,
       },
     })
   })

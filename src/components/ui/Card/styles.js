@@ -77,9 +77,9 @@ export const Title = styled.div`
   padding: 0.6rem 0.4rem;
   text-align: center;
   background: ${props => props.theme.colors.primaryColor};
-  border-radius: 17px;
   border: 2px solid ${props => props.theme.colors.offWhite};
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   & h5 {
     font-size: 1rem;
     color: ${props => props.theme.colors.offWhite};

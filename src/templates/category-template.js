@@ -27,7 +27,7 @@ const CategoryTemplate = ({ data, pageContext, location }) => {
       <SEO title="Menu" />
       <Grid>
         <Searchbar category={pageContext.category} location={location} />
-        <Dishes dishes={dishes} totalDishes={totalDishes} />
+        <Dishes dishes={dishes} totalDishes={totalDishes} location={location} />
       </Grid>
     </Layout>
   )
@@ -44,6 +44,7 @@ export const query = graphql`
         node {
           id
           name
+          slug
           category {
             name
           }

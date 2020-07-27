@@ -1,19 +1,28 @@
 import React from 'react'
+import { Link } from 'gatsby'
+import styled from 'styled-components'
 import { AiFillDollarCircle } from 'react-icons/ai'
 
 import Card from '../ui/Card'
 
-const Dish = ({ data }) => {
+const StyledLink = styled(Link)`
+  width: 100%;
+  height: 100%;
+`
+
+const Dish = ({ dish, location }) => {
   return (
-    <Card height="450px" width='90%'>
-      <Card.Image tag={'div'} img={data.image.fluid} height="77%">
-        <Card.Title>{data.name}</Card.Title>
-      </Card.Image>
-      <Card.Body height="23%">
-        <div>
-          <AiFillDollarCircle /> From ${data.size[0].price}
-        </div>
-      </Card.Body>
+    <Card height="450px" width="90%">
+      <StyledLink to={`${location}/${dish.slug}`}>
+        <Card.Image tag={'div'} img={dish.image.fluid} height="77%">
+          <Card.Title>{dish.name}</Card.Title>
+        </Card.Image>
+        <Card.Body height="23%">
+          <div>
+            <AiFillDollarCircle /> From ${dish.size[0].price}
+          </div>
+        </Card.Body>
+      </StyledLink>
     </Card>
   )
 }
