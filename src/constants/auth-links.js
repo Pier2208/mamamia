@@ -1,34 +1,24 @@
-import React from 'react'
-import {
-  AiOutlineLogin,
-  AiOutlineLogout,
-  AiOutlineUser,
-  AiOutlineShoppingCart,
-} from 'react-icons/ai'
-
-export default [
+const authLinks = [
   {
     path: '/login',
     name: 'Login',
     private: false,
-    icon: <AiOutlineLogin />,
   },
   {
     path: '/account',
-    name: 'My Account',
+    name: 'Account',
     private: true,
-    icon: <AiOutlineUser />,
   },
   {
     path: '/cart',
-    name: 'My Cart',
+    name: 'Cart',
     private: true,
-    icon: <AiOutlineShoppingCart />,
   },
   {
     path: '/',
     name: 'Logout',
     private: true,
-    icon: <AiOutlineLogout />,
   },
 ]
+
+export default authLinks

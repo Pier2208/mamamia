@@ -2,12 +2,12 @@ import { keyframes } from 'styled-components'
 
 export const pulse = keyframes`
   from {
-      box-shadow: 0 0 0 0px rgba(249, 177, 0, 0.1);
+      box-shadow: 0 0 0 0px rgba(66, 59, 75, 0.1);
       background: rgba(255, 255, 255, 0.6);
     }
 
   to {
-      box-shadow: 0 0 0 1000px rgba(249, 177, 0, 0);
+      box-shadow: 0 0 0 1000px rgba(66, 159, 75, 0);
       background: rgba(255, 255, 255, 0);
     }
 `
@@ -29,7 +29,7 @@ export const openTop = keyframes`
 
 export const openMid = keyframes`
     50% {
-      /* mno )% because this line does not need to collapse
+      /* no 0% because this line does not need to collapse
       it's already in the middle */
       transform: rotate(0deg);
     }
@@ -54,7 +54,7 @@ export const openBtm = keyframes`
     }
 `
 
-export const closedTop= keyframes`
+export const closedTop = keyframes`
     0% {
       /* initial starting point of top line */
       transform: translateY(-5px) rotate(0deg);
@@ -69,8 +69,8 @@ export const closedTop= keyframes`
     }
 `
 
-export const closedMid= keyframes`
-        /* no )% because this line does not need to collapse
+export const closedMid = keyframes`
+        /* no 0% because this line does not need to collapse
     it's already in the middle */
     50% {
       /* starting point */
@@ -81,8 +81,8 @@ export const closedMid= keyframes`
       transform: rotate(45deg);
     }
 `
-  
-export const closedBtm= keyframes`
+
+export const closedBtm = keyframes`
     0% {
     /* starting point of bottom line */
       transform: translateY(5px) rotate(0deg);

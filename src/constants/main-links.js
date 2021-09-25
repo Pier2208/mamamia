@@ -1,14 +1,7 @@
-import React from 'react'
-
-export default [
-    {
-        path: '/',
-        name: 'Home',
-        private: false
-    },
+const mainLinks = [
     {
         path: '/menu/pizza',
-        name: 'Our Menu',
+        name: 'Menu',
         private: false
     },
     {
@@ -17,3 +10,5 @@ export default [
         private: false
     }
 ]
+
+export default mainLinks

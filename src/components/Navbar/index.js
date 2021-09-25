@@ -1,107 +1,80 @@
-import React, { useEffect, useRef } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { logoutUser } from '../../redux/actions/userActions'
-import { Link } from 'gatsby'
+import React from 'react'
 import styled from 'styled-components'
+import NavLink from './NavLink'
+import Logo from '../Logo'
 
-import Logo from './Logo'
-import CircleLoader from '../ui/Spinner/CircleLoader'
 import HiddenCheckbox from './HiddenCheckbox'
 import Hamburger from './Hamburger'
 import Menu from './Menu'
 import Links from './Links'
 import mainLinks from '../../constants/main-links'
-import authLinks from '../../constants/auth-links'
-
-const Nav = styled.nav`
-  width: 100%;
-  height: 3.5rem;
-  position: fixed;
-  padding: 0 5vw;
-  z-index: 1111;
-  display: flex;
-  align-items: center;
-  background-color: rgba(244, 244, 244, 0);
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1),
-    -4px -4px 5px rgba(255, 255, 255, 0.6);
-  transition: all 0.4s ease-out;
-`
 
 const Navbar = () => {
-  const navRef = useRef()
-  const { isAuthenticated } = useSelector(state => state.user)
-  const { loading } = useSelector(state => state.ui)
-
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    const getPos = () => {
-      let scrollPos = window.scrollY
-      if (scrollPos > 10) {
-        navRef.current.style.backgroundColor = 'rgba(255, 255, 255, 1)'
-        navRef.current.style.height = '2.5rem'
-      } else {
-        navRef.current.style.backgroundColor = 'rgba(255, 255, 255, 0)'
-        navRef.current.style.height = '3.5rem'
-      }
-    }
-    window.addEventListener('scroll', getPos)
-
-    return () => {
-      window.removeEventListener('scroll', getPos)
-    }
-  }, [])
-
-  const logout = () => dispatch(logoutUser())
-
   return (
-    <Nav ref={navRef}>
-      <Logo></Logo>
-      <HiddenCheckbox id="menu" />
-      <Hamburger />
-      <Menu>
-        <Links mcol fromRight>
-          {mainLinks.map((link, i) => {
-            if (!link.private) {
-              return (
-                <Link key={i} to={link.path}>
-                  {link.icon} {link.name}
-                </Link>
-              )
-            }
-          })}
-        </Links>
-        {loading ? (
-          <CircleLoader />
-        ) : (
-          <Links mcol fromRight>
-            {authLinks.map((link, i) => {
-              if (isAuthenticated && link.private) {
-                if (link.name === 'Logout') {
-                  return (
-                    <Link key={i} to={link.path} onClick={logout}>
-                      {link.icon} {link.name}
-                    </Link>
-                  )
-                }
-                return (
-                  <Link key={i} to={link.path}>
-                    {link.icon} {link.name}
-                  </Link>
-                )
-              } else if (!isAuthenticated && !link.private) {
-                return (
-                  <Link key={i} to={link.path}>
-                    {link.icon} {link.name}
-                  </Link>
-                )
-              }
-            })}
+    <Header>
+      <NavbarLeft>
+        <div />
+        <div>
+          <Logo fill={'var(--color-grey-dark)'} />
+        </div>
+      </NavbarLeft>
+      <NavbarMain>
+        <SiteName>Mamamia Pizza</SiteName>
+        <HiddenCheckbox id="menu" />
+        <Hamburger />
+        <Menu>
+          <Links>
+            {mainLinks.map((link, i) =>
+              !link.private ? (
+                <NavLink key={i} to={link.path}>
+                  {link.name}
+                </NavLink>
+              ) : null
+            )}
           </Links>
-        )}
-      </Menu>
-    </Nav>
+        </Menu>
+      </NavbarMain>
+    </Header>
   )
 }
+
+const Header = styled.header`
+  display: flex;
+  align-items: center;
+  background-color: var(--color-primary);
+  height: 70px;
+  width: 100%;
+`
+// partie gauche du header(div verte et blanche)
+const NavbarLeft = styled.div`
+  display: flex;
+  height: 100%;
+  width: 140px;
+  & > div {
+    flex: 1;
+  }
+  & > div:first-child {
+    background-color: var(--color-secondary);
+  }
+  & > div:last-child {
+    background-color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`
+// partie principale du header (rouge)
+const NavbarMain = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-m);
+  width: 100%;
+`
+
+const SiteName = styled.h1`
+  color: var(--color-white);
+  margin-right: auto;
+`
 
 export default Navbar
