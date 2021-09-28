@@ -1,12 +1,13 @@
 import { createGlobalStyle } from 'styled-components'
-import '@fontsource/amatic-sc';
-import '@fontsource/josefin-slab';
+import '@fontsource/amatic-sc'
+import '@fontsource/josefin-slab'
 
 const GlobalStyle = createGlobalStyle`
 :root {
     box-sizing: border-box;
     font-size: 0.75rem;
     --color-primary: #D12626;
+    --color-primary-lighter: #dd4242;
     --color-secondary: #3EAF4E;
     --color-white: #fff;
     --color-black: #504E4E;
@@ -48,8 +49,16 @@ body {
     font-family: var(--font-body);
   }
 
+main {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 100vh;
+}
+
 h1, h2, h3 {
     font-family: var(--font-display);
+    letter-spacing: 2px;
 }
 
 ul {
@@ -58,6 +67,7 @@ ul {
 
 a {
   text-decoration: none;
+  color: var(--color-grey-dark);
 }
 
 p {
@@ -89,8 +99,20 @@ form {
 }
 
 /* RYTHME VERTICAL */
+section + *,
+header + *, div + button, ul + *  {
+  margin-top: var(--spacing-l);
+}
 
+p + * {
+  margin-top: var(--spacing-m);
+}
 
+main {
+  margin-top: var(--spacing-l);
+  margin-bottom: var(--spacing-l);
+  padding: var(--spacing-l) 0;
+}
 `
 
 export default GlobalStyle

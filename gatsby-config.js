@@ -4,7 +4,7 @@ module.exports = {
   siteMetadata: {
     title: `Mamamia Pizza`,
     description: `The best pizza in town.`,
-    author: `Pierrick Le Roy`,
+    author: `Pierrick Le Roy`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -16,8 +16,8 @@ module.exports = {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-      },
-    },
-  ],
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+      }
+    }
+  ]
 }

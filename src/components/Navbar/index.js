@@ -26,7 +26,15 @@ const Navbar = () => {
           <Links>
             {mainLinks.map((link, i) =>
               !link.private ? (
-                <NavLink key={i} to={link.path}>
+                <NavLink
+                  key={i}
+                  to={link.path}
+                  color={'var(--color-white)'}
+                  activeStyle={{
+                    fontWeight: 'bold',
+                    textDecoration: 'underline'
+                  }}
+                >
                   {link.name}
                 </NavLink>
               ) : null
