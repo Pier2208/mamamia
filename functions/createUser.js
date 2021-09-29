@@ -67,9 +67,9 @@ exports.handler = async (event, context) => {
 
     // // store token in a httpOnly cookie
     const secretCookie = cookie.serialize('st', secret, {
-      expires: '30',
-      httpOnly: true,
-      path: '/' // mandatory to see the cookie in devtools
+      // no expires = most clients will consider this a "non-persistent cookie" and will delete it on a condition like exiting a web browser application.
+      httpOnly: false,
+      path: '/', // mandatory to see the cookie in devtools
       //secure: true // will block the cookie if sent over a not secured connexion
     })
 
