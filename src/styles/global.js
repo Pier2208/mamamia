@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 import '@fontsource/amatic-sc'
 import '@fontsource/josefin-slab'
+import '@fontsource/open-sans'
 
 const GlobalStyle = createGlobalStyle`
 :root {
@@ -17,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
 
     --font-display: 'Amatic SC', cursive;
     --font-body: 'Josefin Slab', serif;
+    --font-form: 'Open Sans', sans-serif;
 
     --spacing-s: 0.5rem;
     --spacing-m: 1.5rem;
@@ -30,7 +32,7 @@ const GlobalStyle = createGlobalStyle`
   }
   @media (min-width: 800px) {
     :root {
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
   }
 }
@@ -61,6 +63,11 @@ h1, h2, h3 {
     letter-spacing: 2px;
 }
 
+h1 {
+  font-size: 2rem;
+  margin-top: 0%;;
+}
+
 ul {
   list-style-type: none;
 }
@@ -84,6 +91,13 @@ p {
   width: 1px;
 }
 
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -100,18 +114,23 @@ form {
 
 /* RYTHME VERTICAL */
 section + *,
-header + *, div + button, ul + *  {
+header + *, ul + *  {
   margin-top: var(--spacing-l);
 }
 
-p + * {
+p + *, button + *, div + button {
   margin-top: var(--spacing-m);
 }
+
+ul {
+  margin-top: var(--spacing-l);
+}
+
 
 main {
   margin-top: var(--spacing-l);
   margin-bottom: var(--spacing-l);
-  padding: var(--spacing-l) 0;
+  padding: var(--spacing-l) var(--spacing-m);
 }
 `
 

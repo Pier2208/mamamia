@@ -1,23 +1,25 @@
 const authLinks = [
   {
-    path: '/login',
     name: 'Login',
     private: false,
+    type: 'button'
   },
   {
     path: '/account',
     name: 'Account',
     private: true,
+    type: 'link'
   },
   {
     path: '/cart',
     name: 'Cart',
     private: true,
+    type: 'link'
   },
   {
-    path: '/',
     name: 'Logout',
     private: true,
+    type: 'button'
   },
 ]
 

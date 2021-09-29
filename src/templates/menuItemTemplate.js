@@ -6,7 +6,7 @@ import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import Layout from '../components/Layout'
 import MenuLinks from '../components/MenuLinks'
-import CustomButton from '../components/CustomButton'
+import { CustomButton } from '../components/CustomButtons'
 import media from '../styles/breakpoint'
 
 const Grid = styled.section`
@@ -35,9 +35,9 @@ const FormGroup = styled.div`
 `
 
 const Select = styled.select`
-    outline: none;
-    border-radius: 3px;
-    border-color: var(--color-grey-dark);
+  outline: none;
+  border-radius: 3px;
+  border-color: var(--color-grey-dark);
 `
 
 const menuItemTemplate = ({ data, pageContext, location }) => {
@@ -69,7 +69,9 @@ const menuItemTemplate = ({ data, pageContext, location }) => {
               <label htmlFor="quantity">Quantity: </label>
               <Select id="quantity" name="quantity">
                 {Array.from({ length: 20 }, (_, i) => i + 1).map(n => (
-                  <option key={n} value={n}>{n}</option>
+                  <option key={n} value={n}>
+                    {n}
+                  </option>
                 ))}
               </Select>
             </FormGroup>

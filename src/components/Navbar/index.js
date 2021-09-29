@@ -1,15 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import NavLink from './NavLink'
 import Logo from '../Logo'
 
+import QuickLoginModal from './QuickLoginModal'
 import HiddenCheckbox from './HiddenCheckbox'
 import Hamburger from './Hamburger'
 import Menu from './Menu'
 import Links from './Links'
+import authLinks from '../../constants/auth-links'
 import mainLinks from '../../constants/main-links'
+import { ButtonLink } from '../CustomButtons'
+
+const isAuthenticated = false
 
 const Navbar = () => {
+  const [showLogin, setShowLogin] = useState(false)
+
   return (
     <Header>
       <NavbarLeft>
@@ -24,6 +31,7 @@ const Navbar = () => {
         <Hamburger />
         <Menu>
           <Links>
+            {/* MAIN LINKS */}
             {mainLinks.map((link, i) =>
               !link.private ? (
                 <NavLink
@@ -39,9 +47,27 @@ const Navbar = () => {
                 </NavLink>
               ) : null
             )}
+            {/* AUTH LINKS */}
+            {authLinks.map((link, i) => {
+              if (isAuthenticated && link.private) {
+                return null
+              } else if (!isAuthenticated && !link.private) {
+                return (
+                  <ButtonLink
+                    key={i}
+                    onClick={() => setShowLogin(!showLogin)}
+                    type="button"
+                    color={`var(--color-white)`}
+                  >
+                    {link.name}
+                  </ButtonLink>
+                )
+              }
+            })}
           </Links>
         </Menu>
       </NavbarMain>
+      <QuickLoginModal show={showLogin} />
     </Header>
   )
 }
@@ -52,6 +78,7 @@ const Header = styled.header`
   background-color: var(--color-primary);
   height: 70px;
   width: 100%;
+  position: relative;
 `
 // partie gauche du header(div verte et blanche)
 const NavbarLeft = styled.div`
