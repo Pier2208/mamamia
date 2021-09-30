@@ -12,13 +12,13 @@ const useForm = (initialValues, formLogic, validate) => {
       const noErrors = Object.keys(errors).length === 0
       if (noErrors) {
         formLogic(values)
-          // .then(() => {
-          //   resetForm()
-          // })
-          // .catch(error => {
-          //   setErrors({ ...error })
-          //   setSubmitting(false)
-          // })
+          .then(() => {
+            resetForm()
+          })
+          .catch(error => {
+            setErrors({ ...error })
+            setSubmitting(false)
+          })
       }
     } else {
       setSubmitting(false)

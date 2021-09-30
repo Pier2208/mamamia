@@ -6,7 +6,7 @@ import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import Layout from '../components/Layout'
 import MenuLinks from '../components/MenuLinks'
-import { CustomButton } from '../components/CustomButtons'
+import { CustomButton } from '../components/Buttons/CustomButtons'
 import media from '../styles/breakpoint'
 
 const Grid = styled.section`

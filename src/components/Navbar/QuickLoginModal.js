@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 import { Input } from '../Forms/FormUI'
-import { CustomButton } from '../CustomButtons'
+import { CustomButton } from '../Buttons/CustomButtons'
 import Icon from '../Icon'
 import Divider from '../Divider'
 

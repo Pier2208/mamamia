@@ -3,10 +3,11 @@ import styled from 'styled-components'
 import { StaticImage } from 'gatsby-plugin-image'
 import Layout from '../components/Layout'
 import Divider from '../components/Divider'
-import { CustomButton } from '../components/CustomButtons'
 import RegisterForm from '../components/Forms/RegisterForm'
 import Icon from '../components/Icon'
 import media from '../styles/breakpoint'
+import { CustomButton } from '../components/Buttons/CustomButtons'
+import LoginWithGoogleButton from '../components/Buttons/LoginWithGoogle'
 
 const Image = styled.div`
 display: none;
@@ -40,14 +41,6 @@ const inputStyle = {
   padding: '0.5rem'
 }
 
-const loginWithGoogleStyle = {
-  ...inputStyle,
-  width: '100%',
-  bgColor: `var(--color-white)`,
-  color: `var(--color-dark-grey)`,
-  border: '1px solid var(--color-grey-dark)'
-}
-
 const loginWithFacebookStyle = {
   ...inputStyle,
   width: '100%',
@@ -74,15 +67,7 @@ const Register = () => {
           <RegisterForm />
           <Divider />
           <SocialLogins>
-            <CustomButton {...loginWithGoogleStyle}>
-              <Icon
-                name="google"
-                width="1.4rem"
-                height="1.4rem"
-                style={{ marginRight: '0.5rem' }}
-              />
-              Register with Google
-            </CustomButton>
+            <LoginWithGoogleButton />
             <CustomButton {...loginWithFacebookStyle}>
               <Icon
                 name="facebook"

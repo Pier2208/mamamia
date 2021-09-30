@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux'
+import { logoutUser } from '../../redux/actions/userActions'
 import NavLink from './NavLink'
 import Logo from '../Logo'
 
@@ -10,12 +12,12 @@ import Menu from './Menu'
 import Links from './Links'
 import authLinks from '../../constants/auth-links'
 import mainLinks from '../../constants/main-links'
-import { ButtonLink } from '../CustomButtons'
-
-const isAuthenticated = false
+import { ButtonLink } from '../Buttons/CustomButtons'
 
 const Navbar = () => {
+  const { isAuthenticated } = useSelector(state => state.user)
   const [showLogin, setShowLogin] = useState(false)
+  const dispatch = useDispatch()
 
   return (
     <Header>
@@ -50,7 +52,31 @@ const Navbar = () => {
             {/* AUTH LINKS */}
             {authLinks.map((link, i) => {
               if (isAuthenticated && link.private) {
-                return null
+                if (link.name === 'Logout') {
+                  return (
+                    <ButtonLink
+                      key={i}
+                      onClick={() => dispatch(logoutUser())}
+                      type="button"
+                      color={`var(--color-white)`}
+                    >
+                      {link.name}
+                    </ButtonLink>
+                  )
+                }
+                return (
+                  <NavLink
+                    key={i}
+                    to={link.path}
+                    color={'var(--color-white)'}
+                    activeStyle={{
+                      fontWeight: 'bold',
+                      textDecoration: 'underline'
+                    }}
+                  >
+                    {link.name}
+                  </NavLink>
+                )
               } else if (!isAuthenticated && !link.private) {
                 return (
                   <ButtonLink

@@ -4,7 +4,7 @@ import { persistStore } from 'redux-persist'
 import { PersistGate } from 'redux-persist/integration/react'
 
 import createStore from './src/redux/store'
-//import { getCurrentUser } from './src/redux/actions/userActions'
+import { getCurrentUser } from './src/redux/actions/userActions'
 
 // eslint-disable-next-line react/display-name,react/prop-types
 export default ({ element }) => {
@@ -16,7 +16,7 @@ export default ({ element }) => {
   const persistor = persistStore(store)
 
   // on first load or page refresh; fetch the current logged in user
-  // store.dispatch(getCurrentUser())
+  store.dispatch(getCurrentUser())
 
   return (
     <Provider store={store}>

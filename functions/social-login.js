@@ -4,7 +4,7 @@ require('dotenv').config()
 
 const q = faunadb.query
 const client = new faunadb.Client({
-  secret: process.env.FAUNA_DB_SECRET,
+  secret: process.env.FAUNA_DB_SECRET
 })
 
 // route: /api/social-login
@@ -32,20 +32,20 @@ exports.handler = async (event, context) => {
             secret: q.Select(
               ['secret'],
               q.Login(q.Var('userRef'), {
-                password: `${id}${process.env.SERVER_SECRET}`,
+                password: `${id}${process.env.SERVER_SECRET}`
               })
-            ),
+            )
           },
           {
             user: q.Var('user'),
-            secret: q.Var('secret'),
+            secret: q.Var('secret')
           }
         )
       )
       // store token in a httpOnly cookie
       const secretCookie = cookie.serialize('st', secret, {
         httpOnly: true,
-        path: '/', // mandatory to see the cookie in devtools
+        path: '/' // mandatory to see the cookie in devtools
         // secure: true // will block the cookie if sent over a not secured connexion
       })
       userSecret = secret
@@ -53,13 +53,13 @@ exports.handler = async (event, context) => {
       return {
         statusCode: 200,
         headers: {
-          'Set-Cookie': secretCookie,
+          'Set-Cookie': secretCookie
         },
         body: JSON.stringify({
           statusCode: 200,
           isAuthenticated: true,
-          user,
-        }),
+          user: { email: user.email }
+        })
       }
     } else {
       // create a new user and automatically log him in
@@ -72,23 +72,23 @@ exports.handler = async (event, context) => {
                 data: {
                   id,
                   email,
-                  createdAt: new Date().toISOString(),
+                  createdAt: new Date().toISOString()
                 },
                 credentials: {
-                  password: `${id}${process.env.SERVER_SECRET}`,
-                },
+                  password: `${id}${process.env.SERVER_SECRET}`
+                }
               })
             ),
             secret: q.Select(
               ['secret'],
               q.Login(q.Var('userRef'), {
-                password: `${id}${process.env.SERVER_SECRET}`,
+                password: `${id}${process.env.SERVER_SECRET}`
               })
-            ),
+            )
           },
           {
             user: q.Select(['data'], q.Get(q.Var('userRef'))),
-            secret: q.Var('secret'),
+            secret: q.Var('secret')
           }
         )
       )
@@ -96,24 +96,27 @@ exports.handler = async (event, context) => {
       // store token in a httpOnly cookie
       const secretCookie = cookie.serialize('st', secret, {
         httpOnly: true,
-        path: '/', // mandatory to see the cookie in devtools
+        path: '/' // mandatory to see the cookie in devtools
         // secure: true // will block the cookie if sent over a not secured connexion
       })
 
       return {
         statusCode: 200,
         headers: {
-          'Set-Cookie': secretCookie,
+          'Set-Cookie': secretCookie
         },
-        body: JSON.stringify({ isAuthenticated: true, user }),
+        body: JSON.stringify({
+          isAuthenticated: true,
+          user: { email: user.email }
+        })
       }
     }
   } catch (error) {
     return {
       statusCode: 500,
       body: JSON.stringify({
-        error,
-      }),
+        error
+      })
     }
   }
 }

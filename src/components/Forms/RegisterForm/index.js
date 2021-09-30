@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { registerUser } from '../../../redux/actions/userActions'
 import { Form, Input } from '../FormUI'
-import { CustomButton } from '../../CustomButtons'
+import { CustomButton } from '../../Buttons/CustomButtons'
 import useForm from '../../../hooks/useForm'
 import registerFormValidate from './registerFormValidate'
 
