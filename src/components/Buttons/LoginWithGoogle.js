@@ -24,7 +24,7 @@ const LoginWithGoogleButton = () => {
   const dispatch = useDispatch()
   const { signIn } = useGoogleLogin({
     clientId:
-      '893396666303-o5bucnsaup29l8h23q3l1jdlddi8uujg.apps.googleusercontent.com',
+      '893396666303-uob3hut5voq6f0i8ifkobtab1rdkqkfq.apps.googleusercontent.com',
     onSuccess: responseGoogle,
     onFailure: responseGoogle,
     cookiePolicy: 'single_host_origin'
