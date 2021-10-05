@@ -5,7 +5,8 @@ import {
   LOGOUT_USER,
   SET_LOADING,
   SHOW_TOAST,
-  SOCIAL_LOGIN
+  SOCIAL_LOGIN,
+  LOGIN_USER
 } from './types'
 
 export const registerUser =
@@ -31,13 +32,13 @@ export const registerUser =
         type: REGISTER_USER,
         payload: data
       })
-      // dispatch({
-      //   type: SHOW_TOAST,
-      //   payload: {
-      //     genre: 'success',
-      //     message: 'You are now logged in.'
-      //   }
-      // })
+      dispatch({
+        type: SHOW_TOAST,
+        payload: {
+          genre: 'success',
+          message: 'You are now logged in.'
+        }
+      })
       navigate('/')
     } catch (err) {
       // throw  as is the error coming from fetch so that formLogic() can catch it as an object
@@ -80,6 +81,38 @@ export const getCurrentUser = () => async dispatch => {
   }
 }
 
+export const loginUser =
+  ({ email, password }) =>
+  async dispatch => {
+    try {
+      const reqOptions = {
+        method: 'POST',
+        body: JSON.stringify({
+          email,
+          password
+        })
+      }
+      const response = await fetch('/.netlify/functions/loginUser', reqOptions)
+      const data = await response.json()
+
+      dispatch({
+        type: LOGIN_USER,
+        payload: data
+      })
+      dispatch({
+        type: SHOW_TOAST,
+        payload: {
+          genre: 'success',
+          message: 'You are now logged in.'
+        }
+      })
+      navigate('/')
+    } catch (err) {
+      console.log(err)
+      throw err
+    }
+  }
+
 export const logoutUser = () => async dispatch => {
   try {
     const reqOptions = {
@@ -108,7 +141,6 @@ export const logoutUser = () => async dispatch => {
 }
 
 export const loginWithGoogle = googleResponse => async dispatch => {
-
   try {
     const reqOptions = {
       method: 'POST',
@@ -125,13 +157,13 @@ export const loginWithGoogle = googleResponse => async dispatch => {
       type: SOCIAL_LOGIN,
       payload: data
     })
-    // dispatch({
-    //   type: SHOW_TOAST,
-    //   payload: {
-    //     genre: 'success',
-    //     message: 'You are now logged in.'
-    //   }
-    // })
+    dispatch({
+      type: SHOW_TOAST,
+      payload: {
+        genre: 'success',
+        message: 'You are now logged in.'
+      }
+    })
     navigate('/')
   } catch (err) {
     console.log(err)

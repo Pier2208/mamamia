@@ -1,10 +1,14 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { registerUser } from '../../../redux/actions/userActions'
+// COMPONENTS
 import { Form, Input } from '../FormUI'
 import { CustomButton } from '../../Buttons/CustomButtons'
+// HOOKS
 import useForm from '../../../hooks/useForm'
+// FORM VALIDATION
 import registerFormValidate from './registerFormValidate'
+// REDUX ACTIONS
+import { registerUser } from '../../../redux/actions/userActions'
 
 const inputStyle = {
   fontSize: '1rem',

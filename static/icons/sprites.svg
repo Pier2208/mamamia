@@ -63,5 +63,11 @@
                 </clipPath>
             </defs>
         </symbol>
+        <!-- close icon -->
+        <symbol id="close" viewBox="0 0 115 115">
+            <title>Fermer</title>
+            <path d="m57.5 57.5 19.167 19.167M57.5 57.5 38.333 38.333M57.5 57.5 38.333 76.667M57.5 57.5l19.167-19.167M57.5 14.375a43.125 43.125 0 1 1 0 86.25 43.125 43.125 0 0 1 0-86.25v0Z" stroke-width="9.583" stroke-linecap="round" />
+        </symbol>
+
     </defs>
 </svg>

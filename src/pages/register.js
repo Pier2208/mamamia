@@ -67,7 +67,7 @@ const Register = () => {
           <RegisterForm />
           <Divider />
           <SocialLogins>
-            <LoginWithGoogleButton />
+            <LoginWithGoogleButton>Register with Google</LoginWithGoogleButton>
             <CustomButton {...loginWithFacebookStyle}>
               <Icon
                 name="facebook"

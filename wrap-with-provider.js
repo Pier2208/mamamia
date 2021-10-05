@@ -6,6 +6,8 @@ import { PersistGate } from 'redux-persist/integration/react'
 import createStore from './src/redux/store'
 import { getCurrentUser } from './src/redux/actions/userActions'
 
+import ModalManager from './src/components/ModalManager'
+
 // eslint-disable-next-line react/display-name,react/prop-types
 export default ({ element }) => {
   // Instantiating store in `wrapRootElement` handler ensures:
@@ -20,6 +22,7 @@ export default ({ element }) => {
 
   return (
     <Provider store={store}>
+      <ModalManager />
       <PersistGate persistor={persistor} loading={null}>
         {element}
       </PersistGate>

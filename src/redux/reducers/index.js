@@ -5,16 +5,18 @@ import storage from 'redux-persist/lib/storage'
 //reducers
 import user from './userReducer'
 import ui from'./uiReducer'
+import modal from './modalReducer'
 
 const persistConfig = {
     key: 'root', // at what point we want to persist the data
     storage,
-    blacklist: ['user', 'ui'], // what slices of the store we want to persist
+    blacklist: ['user', 'ui', 'modal'], // what slices of the store we want to persist
   }
 
 const rootReducer = combineReducers({
     user,
-    ui
+    ui,
+    modal
 })
 
 export default persistReducer(persistConfig, rootReducer)

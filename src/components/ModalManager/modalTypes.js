@@ -1,0 +1,1 @@
+export const QUICK_LOGIN_MODAL = 'QUICK_LOGIN_MODAL'

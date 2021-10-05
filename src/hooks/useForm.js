@@ -1,10 +1,15 @@
 import { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+
+import { hideModal } from '../redux/actions/modalActions'
 
 const useForm = (initialValues, formLogic, validate) => {
   const [values, setValues] = useState(initialValues)
   const [errors, setErrors] = useState({})
   const [isSubmitting, setSubmitting] = useState(false)
   const [touched, setTouched] = useState([])
+
+  const dispatch = useDispatch()
 
   // run only if the form is submitted
   useEffect(() => {
@@ -14,6 +19,7 @@ const useForm = (initialValues, formLogic, validate) => {
         formLogic(values)
           .then(() => {
             resetForm()
+            dispatch(hideModal())
           })
           .catch(error => {
             setErrors({ ...error })

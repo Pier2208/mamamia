@@ -19,6 +19,7 @@ const Svg = styled.svg`
   width: ${props => props.width || '35px'};
   height: ${props => props.height || '35px'};
   fill: ${props => props.fill || 'var(--color-grey-dark)'};
+  stroke: ${props => props.stroke || 'var(--color-grey-dark)'}
 `
 
 export default Icon

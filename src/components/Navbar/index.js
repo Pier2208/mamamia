@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 import { logoutUser } from '../../redux/actions/userActions'
+import { showModal } from '../../redux/actions/modalActions'
+import { QUICK_LOGIN_MODAL } from '../ModalManager/modalTypes'
 import NavLink from './NavLink'
 import Logo from '../Logo'
 
-import QuickLoginModal from './QuickLoginModal'
+import CircleLoader from '../Spinner/CircleLoader'
 import HiddenCheckbox from './HiddenCheckbox'
 import Hamburger from './Hamburger'
 import Menu from './Menu'
@@ -16,7 +18,7 @@ import { ButtonLink } from '../Buttons/CustomButtons'
 
 const Navbar = () => {
   const { isAuthenticated } = useSelector(state => state.user)
-  const [showLogin, setShowLogin] = useState(false)
+  const { loading } = useSelector(state => state.ui)
   const dispatch = useDispatch()
 
   return (
@@ -34,37 +36,9 @@ const Navbar = () => {
         <Menu>
           <Links>
             {/* MAIN LINKS */}
-            {mainLinks.map((link, i) =>
-              !link.private ? (
-                <NavLink
-                  key={i}
-                  to={link.path}
-                  color={'var(--color-white)'}
-                  activeStyle={{
-                    fontWeight: 'bold',
-                    textDecoration: 'underline'
-                  }}
-                >
-                  {link.name}
-                </NavLink>
-              ) : null
-            )}
-            {/* AUTH LINKS */}
-            {authLinks.map((link, i) => {
-              if (isAuthenticated && link.private) {
-                if (link.name === 'Logout') {
-                  return (
-                    <ButtonLink
-                      key={i}
-                      onClick={() => dispatch(logoutUser())}
-                      type="button"
-                      color={`var(--color-white)`}
-                    >
-                      {link.name}
-                    </ButtonLink>
-                  )
-                }
-                return (
+            {mainLinks.map(
+              (link, i) =>
+                !link.private && (
                   <NavLink
                     key={i}
                     to={link.path}
@@ -77,23 +51,62 @@ const Navbar = () => {
                     {link.name}
                   </NavLink>
                 )
-              } else if (!isAuthenticated && !link.private) {
-                return (
-                  <ButtonLink
-                    key={i}
-                    onClick={() => setShowLogin(!showLogin)}
-                    type="button"
-                    color={`var(--color-white)`}
-                  >
-                    {link.name}
-                  </ButtonLink>
-                )
-              }
-            })}
+            )}
+
+            {/* AUTH LINKS */}
+            {loading ? (
+              <CircleLoader />
+            ) : (
+              authLinks.map((link, i) => {
+                if (isAuthenticated && link.private) {
+                  if (link.name === 'Logout') {
+                    return (
+                      <ButtonLink
+                        key={i}
+                        onClick={() => dispatch(logoutUser())}
+                        type="button"
+                        color={`var(--color-white)`}
+                      >
+                        {link.name}
+                      </ButtonLink>
+                    )
+                  }
+                  return (
+                    <NavLink
+                      key={i}
+                      to={link.path}
+                      color={'var(--color-white)'}
+                      activeStyle={{
+                        fontWeight: 'bold',
+                        textDecoration: 'underline'
+                      }}
+                    >
+                      {link.name}
+                    </NavLink>
+                  )
+                } else if (!isAuthenticated && !link.private) {
+                  return (
+                    <ButtonLink
+                      key={i}
+                      onClick={() =>
+                        dispatch(
+                          showModal(QUICK_LOGIN_MODAL, {
+                            style: 'quickLoginModal'
+                          })
+                        )
+                      }
+                      type="button"
+                      color={`var(--color-white)`}
+                    >
+                      {link.name}
+                    </ButtonLink>
+                  )
+                }
+              })
+            )}
           </Links>
         </Menu>
       </NavbarMain>
-      <QuickLoginModal show={showLogin} />
     </Header>
   )
 }
