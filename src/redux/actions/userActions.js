@@ -169,3 +169,34 @@ export const loginWithGoogle = googleResponse => async dispatch => {
     console.log(err)
   }
 }
+
+export const loginWithFacebook = facebookResponse => async dispatch => {
+  try {
+    const reqOptions = {
+      method: 'POST',
+      body: JSON.stringify({
+        id: facebookResponse.id,
+        email: facebookResponse.email
+      })
+    }
+
+    const response = await fetch('/.netlify/functions/social-login', reqOptions)
+    const data = await response.json()
+
+    // dispatch action to reducer
+    dispatch({
+      type: SOCIAL_LOGIN,
+      payload: data
+    })
+    dispatch({
+      type: SHOW_TOAST,
+      payload: {
+        genre: 'success',
+        message: 'You are now logged in.'
+      }
+    })
+    navigate('/')
+  } catch (err) {
+    console.log(err)
+  }
+}

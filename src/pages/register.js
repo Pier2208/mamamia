@@ -4,10 +4,9 @@ import { StaticImage } from 'gatsby-plugin-image'
 import Layout from '../components/Layout'
 import Divider from '../components/Divider'
 import RegisterForm from '../components/Forms/RegisterForm'
-import Icon from '../components/Icon'
 import media from '../styles/breakpoint'
-import { CustomButton } from '../components/Buttons/CustomButtons'
 import LoginWithGoogleButton from '../components/Buttons/LoginWithGoogle'
+import LoginWithFacebookButton from '../components/Buttons/LoginWithFacebook'
 
 const Image = styled.div`
 display: none;
@@ -36,18 +35,6 @@ const SocialLogins = styled.div`
   max-width: 400px;
 `
 
-const inputStyle = {
-  fontSize: '1rem',
-  padding: '0.5rem'
-}
-
-const loginWithFacebookStyle = {
-  ...inputStyle,
-  width: '100%',
-  bgColor: '#4267B2',
-  color: 'var(--color-white)'
-}
-
 const Register = () => {
   return (
     <Layout>
@@ -68,15 +55,7 @@ const Register = () => {
           <Divider />
           <SocialLogins>
             <LoginWithGoogleButton>Register with Google</LoginWithGoogleButton>
-            <CustomButton {...loginWithFacebookStyle}>
-              <Icon
-                name="facebook"
-                width="1.4rem"
-                height="1.4rem"
-                style={{ marginRight: '0.5rem' }}
-              />
-              Register with Facebook
-            </CustomButton>
+            <LoginWithFacebookButton>Register with Facebook</LoginWithFacebookButton>
           </SocialLogins>
         </div>
       </Section>

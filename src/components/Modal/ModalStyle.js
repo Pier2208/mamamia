@@ -11,7 +11,7 @@ const ModalStyle = styled.div`
       display: flex;
       flex-direction: column;
       background-color: var(--color-white);
-      padding: 1rem;
+      padding: 2rem 1rem;
       border-radius: 10px;
       box-shadow: 2px 2px 15px rgba(79, 81, 80, 0.1);
       width: 300px;

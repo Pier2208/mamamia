@@ -8,6 +8,7 @@ import useForm from '../../../hooks/useForm'
 import { Input } from '../FormUI'
 import { CustomButton } from '../../Buttons/CustomButtons'
 import LoginWithGoogleButton from '../../Buttons/LoginWithGoogle'
+import LoginWithFacebookButton from '../../Buttons/LoginWithFacebook'
 import loginFormValidate from './loginFormValidate'
 import Divider from '../../Divider'
 import Modal from '../../Modal'
@@ -24,17 +25,18 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   & > *:not(:first-child) {
-    margin-top: var(--spacing-s);
+    margin-top: var(--spacing-m);
   }
 `
 const inputStyle = {
+  fontSize: '1rem',
   padding: '0.5rem'
 }
 
 const buttonStyle = {
   bgColor: `var(--color-primary)`,
   padding: '0.5rem',
-  fontSize: '0.7rem',
+  fontSize: '1rem',
   width: '100%'
 }
 
@@ -115,6 +117,7 @@ const QuickLoginModal = () => {
 
       {/* LOGIN WITH GOOGLE */}
       <LoginWithGoogleButton>Login with Google</LoginWithGoogleButton>
+      <LoginWithFacebookButton>Login with Facebook</LoginWithFacebookButton>
       <Link to="/register">
         <CustomButton
           {...registerButtonStyle}
