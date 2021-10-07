@@ -147,7 +147,8 @@ const Header = styled.header`
   background-color: var(--color-primary);
   height: 70px;
   width: 100%;
-  position: relative;
+  position: fixed;
+  z-index: 1111;
 `
 // partie gauche du header(div verte et blanche)
 const NavbarLeft = styled.div`

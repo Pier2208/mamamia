@@ -3,6 +3,7 @@ import categoryLinks from '../constants/category-links'
 import styled from 'styled-components'
 import NavLink from './Navbar/NavLink'
 import Icon from './Icon'
+import Line from './Line'
 
 const Wrapper = styled.ul`
   display: flex;
@@ -20,28 +21,31 @@ const MenuLink = styled.li`
 `
 
 const MenuLinks = () => {
-    return (
-        <Wrapper>
-          {categoryLinks.map(link => {
-            return (
-              <MenuLink key={link.name}>
-                <Icon name={link.iconName} />
-                <NavLink
-                  to={link.path}
-                  color={'var(--color-grey-dark)'}
-                  activeStyle={{
-                    color: 'var(--color-primary)',
-                    fontWeight: 'bold',
-                    textDecoration: 'underline'
-                  }}
-                >
-                  {link.name.toUpperCase()}
-                </NavLink>
-              </MenuLink>
-            )
-          })}
-        </Wrapper>
-    )
+  return (
+    <>
+      <Wrapper>
+        {categoryLinks.map(link => {
+          return (
+            <MenuLink key={link.name}>
+              <Icon name={link.iconName} />
+              <NavLink
+                to={link.path}
+                color={'var(--color-grey-dark)'}
+                activeStyle={{
+                  color: 'var(--color-primary)',
+                  fontWeight: 'bold',
+                  textDecoration: 'underline'
+                }}
+              >
+                {link.name.toUpperCase()}
+              </NavLink>
+            </MenuLink>
+          )
+        })}
+      </Wrapper>
+      <Line />
+    </>
+  )
 }
 
 export default MenuLinks

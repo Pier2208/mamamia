@@ -1,5 +1,6 @@
 // bubble dialog: http://nicolasgallagher.com/pure-css-speech-bubbles/demo/
 import styled, { css } from 'styled-components'
+import Navbar from '../Navbar'
 
 const ModalStyle = styled.div`
   ${({ type }) => {
