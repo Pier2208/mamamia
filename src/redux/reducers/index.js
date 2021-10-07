@@ -4,6 +4,7 @@ import storage from 'redux-persist/lib/storage'
 
 //reducers
 import user from './userReducer'
+import cart from './cartReducer'
 import ui from'./uiReducer'
 import modal from './modalReducer'
 
@@ -15,6 +16,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
     user,
+    cart,
     ui,
     modal
 })

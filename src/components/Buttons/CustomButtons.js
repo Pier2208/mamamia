@@ -18,6 +18,7 @@ export const CustomButton = styled.button.attrs({
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  position: relative;
 `
 export const ButtonLink = styled.button.attrs({
   type: 'button'
@@ -31,4 +32,5 @@ export const ButtonLink = styled.button.attrs({
   color: ${({ color }) =>
     color ||
     'var(--color-grey-dark)'}; // get the color passed into the component props
+  position: relative;
 `

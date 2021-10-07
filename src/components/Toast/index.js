@@ -20,7 +20,7 @@ const fadeIn = keyframes`
 
 const BaseToast = styled.div`
   width: 60%;
-  max-width: 350px;
+  max-width: 500px;
   padding: 0.7rem 2rem;
   display: flex;
   align-items: center;

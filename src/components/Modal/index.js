@@ -11,7 +11,7 @@ import { hideModal } from '../../redux/actions/modalActions'
 ////////////////
 //// REACT ////
 //////////////
-const Modal = ({ children }) => {
+const Modal = ({ children, type }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -32,8 +32,8 @@ const Modal = ({ children }) => {
       <ModalStyle
         role="dialog"
         aria-modal="true"
-        type="quickLoginModal"
         onClick={e => e.stopPropagation()} // empêcher la fermeture du modal au clic dessus
+        type={type}
       >
         {children}
       </ModalStyle>

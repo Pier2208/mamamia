@@ -1,6 +1,7 @@
 // create pages programmatically for each menu item
 
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
@@ -8,6 +9,9 @@ import Layout from '../components/Layout'
 import MenuLinks from '../components/MenuLinks'
 import { CustomButton } from '../components/Buttons/CustomButtons'
 import media from '../styles/breakpoint'
+
+// REDUX ACTIONS
+import { addToCart } from '../redux/actions/cartActions'
 
 const Grid = styled.section`
   width: 100%;
@@ -40,8 +44,39 @@ const Select = styled.select`
   border-color: var(--color-grey-dark);
 `
 
-const menuItemTemplate = ({ data, pageContext, location }) => {
+const MenuItemTemplate = ({ data, pageContext, location }) => {
+
+  const dispatch = useDispatch(addToCart())
+  
+  // get all the data about a menu item
   const menuItem = data.menuItem
+
+  // get the 1st format available from the size array (pizza have 3 formats (M/S/L) with M coming first in the array but burgers only one size: M)
+  const [format, setFormat] = useState(menuItem.size[0])
+  const [quantity, setQuantity] = useState(1)
+
+  // retrieve the item price based on its size and filter out the size array
+  const setPizzaSizeAndPrice = size => {
+    let format = menuItem.size.filter(el => el.size === size)
+    setFormat(format[0])
+  }
+
+  // add to cart the selected item
+  const handleAddToCart = e => {
+    e.preventDefault()
+
+    const myPizza = {
+      key: `${menuItem.name}-${format.size}`,
+      name: menuItem.name,
+      ...format,
+      quantity,
+      image: menuItem.image.gatsbyImageData,
+      total: quantity * format.price
+    }
+
+    dispatch(addToCart(myPizza))
+  }
+
   return (
     <Layout>
       <MenuLinks />
@@ -54,12 +89,14 @@ const menuItemTemplate = ({ data, pageContext, location }) => {
           <Name>{menuItem.name}</Name>
           <p>{menuItem.description}</p>
           <p>Ingredients: {menuItem.ingredients.join(', ')}</p>
-          <form>
+
+          {/* Add pizza to cart form */}
+          <form onSubmit={handleAddToCart}>
             <FormGroup>
               <label htmlFor="size">Select size: </label>
-              <Select id="size" name="size">
+              <Select id="size" name="size" value={format.size} onChange={(e) => setPizzaSizeAndPrice(e.target.value)}>
                 {menuItem.size.map(size => (
-                  <option key={size.size} value="">
+                  <option key={size.size} value={size.size}>
                     {size.size} - ${size.price}
                   </option>
                 ))}
@@ -67,7 +104,7 @@ const menuItemTemplate = ({ data, pageContext, location }) => {
             </FormGroup>
             <FormGroup>
               <label htmlFor="quantity">Quantity: </label>
-              <Select id="quantity" name="quantity">
+              <Select id="quantity" name="quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)}>
                 {Array.from({ length: 20 }, (_, i) => i + 1).map(n => (
                   <option key={n} value={n}>
                     {n}
@@ -103,4 +140,4 @@ export const query = graphql`
   }
 `
 
-export default menuItemTemplate
+export default MenuItemTemplate

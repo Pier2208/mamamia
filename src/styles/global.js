@@ -118,7 +118,7 @@ header + *, ul + *  {
   margin-top: var(--spacing-l);
 }
 
-p + *, button + *, div + button {
+p + *, button + *, div + button, article + article {
   margin-top: var(--spacing-m);
 }
 

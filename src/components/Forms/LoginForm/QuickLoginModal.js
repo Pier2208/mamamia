@@ -55,7 +55,8 @@ const ForgotPassword = styled.small`
 ///// REACT ////////////////////
 ////////////////////////////////
 
-const QuickLoginModal = () => {
+const QuickLoginModal = (props) => {
+
   const dispatch = useDispatch()
 
   /**** FORM */
@@ -80,7 +81,7 @@ const QuickLoginModal = () => {
   /**** END FORM */
 
   return (
-    <Modal>
+    <Modal type={props.style}>
       {/* MAIN LOGIN FORM */}
       <Form onSubmit={handleFormSubmit}>
         <Input

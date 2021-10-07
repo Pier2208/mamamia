@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 import { logoutUser } from '../../redux/actions/userActions'
 import { showModal } from '../../redux/actions/modalActions'
-import { QUICK_LOGIN_MODAL } from '../ModalManager/modalTypes'
+import { QUICK_LOGIN_MODAL, CART_MODAL } from '../ModalManager/modalTypes'
 import NavLink from './NavLink'
 import Logo from '../Logo'
 
@@ -19,7 +19,16 @@ import { ButtonLink } from '../Buttons/CustomButtons'
 const Navbar = () => {
   const { isAuthenticated } = useSelector(state => state.user)
   const { loading } = useSelector(state => state.ui)
+  const cart = useSelector(state => state.cart)
   const dispatch = useDispatch()
+
+  const cartQuantity = () => {
+    let tot = null
+    for (let key in cart) {
+      tot += Number(cart[key]['quantity'])
+    }
+    return tot
+  }
 
   return (
     <Header>
@@ -67,6 +76,27 @@ const Navbar = () => {
                         type="button"
                         color={`var(--color-white)`}
                       >
+                        {link.name}
+                      </ButtonLink>
+                    )
+                  }
+                  if (link.name === 'Cart') {
+                    return (
+                      <ButtonLink
+                        key={i}
+                        onClick={() =>
+                          dispatch(
+                            showModal(CART_MODAL, {
+                              style: 'cartModal'
+                            })
+                          )
+                        }
+                        type="button"
+                        color={`var(--color-white)`}
+                      >
+                        {cartQuantity() && (
+                          <CartQuantity>{cartQuantity()}</CartQuantity>
+                        )}
                         {link.name}
                       </ButtonLink>
                     )
@@ -149,6 +179,21 @@ const NavbarMain = styled.div`
 const SiteName = styled.h1`
   color: var(--color-white);
   margin-right: auto;
+`
+const CartQuantity = styled.span`
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  font-family: var(--font-form);
+  font-size: 0.8rem;
 `
 
 export default Navbar

@@ -14,3 +14,8 @@ export const HIDE_TOAST = 'HIDE_TOAST'
 export const SHOW_MODAL = 'SHOW_MODAL'
 export const HIDE_MODAL = 'HIDE_MODAL'
 
+// CART
+export const ADD_TO_CART = 'ADD_TO_CART'
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
+export const EDIT_CART = 'EDIT_CART'
+

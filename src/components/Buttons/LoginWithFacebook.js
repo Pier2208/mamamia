@@ -8,6 +8,7 @@ import Icon from '../Icon'
 
 // REDUX ACTIONS
 import { loginWithFacebook } from '../../redux/actions/userActions'
+import { hideModal } from '../../redux/actions/modalActions'
 
 const inputStyle = {
   fontSize: '1rem',
@@ -28,6 +29,7 @@ const LoginWithFacebookButton = ({ children }) => {
     // if user closes the popup before authenticating himself
     if (response.status === 'unknown') return
     dispatch(loginWithFacebook(response))
+    dispatch(hideModal())
   }
 
   return (

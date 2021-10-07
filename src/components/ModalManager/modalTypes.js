@@ -1,1 +1,2 @@
 export const QUICK_LOGIN_MODAL = 'QUICK_LOGIN_MODAL'
+export const CART_MODAL = 'CART_MODAL'
