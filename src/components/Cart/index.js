@@ -50,9 +50,9 @@ const Cart = props => {
             <CartTotal>Total: ${cartTotal()}</CartTotal>
             <Line />
             <CartItems>
-              {cartItems.map(cartItem => (
-                <CartItem key={cartItem.name} {...cartItem} />
-              ))}
+              {cartItems.map(cartItem => {
+                return <CartItem key={cartItem.key} cartItem={cartItem} />
+              })}
             </CartItems>
           </>
         ) : (
