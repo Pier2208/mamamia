@@ -175,11 +175,17 @@ const NavbarMain = styled.div`
   justify-content: space-between;
   padding: 0 var(--spacing-m);
   width: 100%;
+
+  & ${ButtonLink} {
+    margin-top: 0;
+  }
 `
 
 const SiteName = styled.h1`
+  display: block;
   color: var(--color-white);
   margin-right: auto;
+  margin-bottom: 0%;;
 `
 const CartQuantity = styled.span`
   position: absolute;

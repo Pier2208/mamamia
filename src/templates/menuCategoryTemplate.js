@@ -21,6 +21,7 @@ const Header = styled.header`
   margin: 0;
 `
 
+
 // data is coming from the query below
 // pageContext is passed from gatsby-node (context)
 // location is an object + location.pathname gives the current path (ex: /menu/pizza)

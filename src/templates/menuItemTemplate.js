@@ -29,6 +29,7 @@ const MenuItemInfo = styled.div`
   display: flex;
   flex-direction: column;
 `
+
 const Name = styled.h1`
   font-size: 3rem;
   letter-spacing: 2px;
@@ -41,7 +42,9 @@ const FormGroup = styled.div`
 const Select = styled.select`
   outline: none;
   border-radius: 3px;
-  border-color: var(--color-grey-dark);
+  border-color: var(--color-black);
+  padding: 2px 5px;
+  color: var(--color-black);
 `
 
 const MenuItemTemplate = ({ data, pageContext, location }) => {

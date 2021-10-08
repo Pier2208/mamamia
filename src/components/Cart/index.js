@@ -50,15 +50,15 @@ const Cart = props => {
             <CartTotal>Total: ${cartTotal()}</CartTotal>
             <Line />
             <CartItems>
-              {cartItems.map(cartItem => {
-                return <CartItem key={cartItem.key} cartItem={cartItem} />
-              })}
+              {cartItems.map(cartItem => (
+                <CartItem key={cartItem.key} cartItem={cartItem} />
+              ))}
             </CartItems>
+            <CustomButton>Proceed to checkout</CustomButton>
           </>
         ) : (
-          'Your cart is empty'
+          'Your cart is empty.'
         )}
-        <CustomButton>Proceed to checkout</CustomButton>
       </Container>
     </Modal>
   )

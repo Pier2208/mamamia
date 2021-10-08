@@ -17,8 +17,8 @@ const GlobalStyle = createGlobalStyle`
     --color-grey-light: #F9F9F9;
 
     --font-display: 'Amatic SC', cursive;
-    --font-body: 'Josefin Slab', serif;
-    --font-form: 'Open Sans', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+    --font-accent: 'Josefin Slab', serif;
 
     --spacing-s: 0.5rem;
     --spacing-m: 1.5rem;
