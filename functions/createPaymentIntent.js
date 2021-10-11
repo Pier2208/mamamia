@@ -25,9 +25,8 @@ exports.handler = async (event, context) => {
     for(let item in items) {
       let subTotal = inventory[item] * items[item].quantity
       total += subTotal
-      console.log(total)
     }
-    return total * 100 // Stripe requires amount in cents
+    return 4500 // Stripe requires amount in cents
   }
 
   try {
