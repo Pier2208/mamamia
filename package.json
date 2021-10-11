@@ -8,6 +8,7 @@
     "@fontsource/amatic-sc": "^4.5.0",
     "@fontsource/josefin-slab": "^4.5.0",
     "@fontsource/open-sans": "^4.5.1",
+    "@sendgrid/mail": "^7.4.7",
     "@stripe/react-stripe-js": "^1.6.0",
     "@stripe/stripe-js": "^1.19.1",
     "babel-plugin-styled-components": "^1.10.7",
