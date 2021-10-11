@@ -35,20 +35,22 @@ const CheckoutForm = () => {
   })
 
   useEffect(() => {
-    // Create PaymentIntent as soon as the page loads
-    fetch('/.netlify/functions/createPaymentIntent', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ items: cart })
-    })
-      .then(res => {
-        return res.json()
+    // Create PaymentIntent as soon as the page loads but only if cart is NOT empty
+    if (Object.keys(cart).length) {
+      fetch('/.netlify/functions/createPaymentIntent', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ items: cart })
       })
-      .then(data => {
-        setClientSecret(data.clientSecret)
-      })
+        .then(res => {
+          return res.json()
+        })
+        .then(data => {
+          setClientSecret(data.clientSecret)
+        })
+    }
   }, [cart])
 
   const handleSubmit = async e => {
@@ -78,7 +80,6 @@ const CheckoutForm = () => {
       setSucceeded(true)
       // reset cart
       dispatch(resetCart())
-
     }
   }
 
@@ -171,11 +172,7 @@ const CheckoutForm = () => {
         <CardField />
       </Fieldset>
       {error && <ErrorMessage>{error.message}</ErrorMessage>}
-      <SubmitButton
-        processing={processing}
-        error={error}
-        disabled={!stripe}
-      >
+      <SubmitButton processing={processing} error={error} disabled={!stripe}>
         Pay
       </SubmitButton>
     </form>
