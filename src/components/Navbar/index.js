@@ -71,6 +71,7 @@ const Navbar = () => {
                   if (link.name === 'Logout') {
                     return (
                       <ButtonLink
+                        type="button"
                         key={i}
                         onClick={() => dispatch(logoutUser())}
                         type="button"
@@ -83,6 +84,7 @@ const Navbar = () => {
                   if (link.name === 'Cart') {
                     return (
                       <ButtonLink
+                        type="button"
                         key={i}
                         onClick={() =>
                           dispatch(
@@ -117,6 +119,7 @@ const Navbar = () => {
                 } else if (!isAuthenticated && !link.private) {
                   return (
                     <ButtonLink
+                      type="button"
                       key={i}
                       onClick={() =>
                         dispatch(
@@ -185,7 +188,7 @@ const SiteName = styled.h1`
   display: block;
   color: var(--color-white);
   margin-right: auto;
-  margin-bottom: 0%;;
+  margin-bottom: 0%; ;
 `
 const CartQuantity = styled.span`
   position: absolute;

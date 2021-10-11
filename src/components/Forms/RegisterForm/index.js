@@ -81,7 +81,7 @@ const RegisterForm = () => {
         onBlur={handleBlur}
         error={errors && errors.confirmPassword}
       />
-      <CustomButton {...registerButtonStyle} disabled={isSubmitting}>
+      <CustomButton type="submit" {...registerButtonStyle} disabled={isSubmitting}>
         Sign Up
       </CustomButton>
     </Form>

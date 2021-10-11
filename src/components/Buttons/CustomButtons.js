@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
-export const CustomButton = styled.button.attrs({
-  type: 'submit'
-})`
+export const CustomButton = styled.button`
   background-color: ${props => props.bgColor || 'var(--color-secondary)'};
   color: ${props => props.color || 'var(--color-white)'};
   outline: none;
@@ -12,7 +10,7 @@ export const CustomButton = styled.button.attrs({
   font-size: ${props => props.fontSize || '1.5rem'};
   text-transform: uppercase;
   border-radius: 10px;
-  width: ${props => props.width|| 'fit-content'};
+  width: ${props => props.width || 'fit-content'};
   padding: ${props => props.padding || '1rem'};
   display: flex;
   align-items: center;
@@ -20,9 +18,7 @@ export const CustomButton = styled.button.attrs({
   cursor: pointer;
   position: relative;
 `
-export const ButtonLink = styled.button.attrs({
-  type: 'button'
-})`
+export const ButtonLink = styled.button`
   font-size: 2.3rem;
   font-family: var(--font-display);
   cursor: pointer;

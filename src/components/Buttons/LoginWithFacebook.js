@@ -39,7 +39,7 @@ const LoginWithFacebookButton = ({ children }) => {
       fields="id,email"
       callback={responseFacebook}
       render={renderProps => (
-        <CustomButton {...loginWithFacebookStyle} onClick={renderProps.onClick}>
+        <CustomButton type="button" {...loginWithFacebookStyle} onClick={renderProps.onClick}>
           <Icon
             name="facebook"
             width="1.4rem"

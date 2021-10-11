@@ -1,4 +1,10 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, EDIT_CART, SHOW_TOAST } from './types'
+import {
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  EDIT_CART,
+  SHOW_TOAST,
+  RESET_CART
+} from './types'
 
 export const addToCart = pizza => async dispatch => {
   dispatch({
@@ -42,5 +48,11 @@ export const editCartQuantity = (key, quantity) => async dispatch => {
       genre: 'success',
       message: `Your cart has been updated!`
     }
+  })
+}
+
+export const resetCart = () => async dispatch => {
+  dispatch({
+    type: RESET_CART
   })
 }

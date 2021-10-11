@@ -82,6 +82,11 @@ p {
   text-align: left;
 }
 
+button {
+  border: none;
+  outline: none;
+}
+
 .visibility-hidden {
   clip-path: inset(50%);
   height: 1px;
@@ -132,6 +137,17 @@ main {
   margin-bottom: var(--spacing-l);
   padding: var(--spacing-l) var(--spacing-m);
 }
+
+/* STRIPE */
+.StripeElement--webkit-autofill {
+  background: transparent !important;
+}
+
+.StripeElement {
+  width: 100%;
+  padding: 11px 15px 11px 0;
+}
+
 `
 
 export default GlobalStyle

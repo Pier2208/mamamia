@@ -55,8 +55,7 @@ const ForgotPassword = styled.small`
 ///// REACT ////////////////////
 ////////////////////////////////
 
-const QuickLoginModal = (props) => {
-
+const QuickLoginModal = props => {
   const dispatch = useDispatch()
 
   /**** FORM */
@@ -106,7 +105,9 @@ const QuickLoginModal = (props) => {
           onBlur={handleBlur}
           error={errors && errors.password}
         />
-        <CustomButton {...buttonStyle}>Login</CustomButton>
+        <CustomButton type="submit" {...buttonStyle}>
+          Login
+        </CustomButton>
       </Form>
 
       {/* RESET PASSWORD LINK */}
@@ -121,6 +122,7 @@ const QuickLoginModal = (props) => {
       <LoginWithFacebookButton>Login with Facebook</LoginWithFacebookButton>
       <Link to="/register">
         <CustomButton
+          type="button"
           {...registerButtonStyle}
           onClick={() => dispatch(hideModal())}
         >

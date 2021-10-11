@@ -1,10 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useSelector } from 'react-redux'
+import { navigate } from 'gatsby'
+import { useSelector, useDispatch } from 'react-redux'
 import Modal from '../Modal'
 import CartItem from './CartItem'
 import Line from '../Line'
 import { CustomButton } from '../Buttons/CustomButtons'
+
+// REDUX ACTIONS
+import { hideModal } from '../../redux/actions/modalActions'
 
 const Container = styled.div`
   overflow-y: scroll;
@@ -28,6 +32,7 @@ const CartItems = styled.div`
 
 const Cart = props => {
   const cart = useSelector(state => state.cart)
+  const dispatch = useDispatch()
 
   const cartItems = []
   for (let item in cart) {
@@ -54,7 +59,17 @@ const Cart = props => {
                 <CartItem key={cartItem.key} cartItem={cartItem} />
               ))}
             </CartItems>
-            <CustomButton>Proceed to checkout</CustomButton>
+            {/* Navigate to checkout page */}
+            <CustomButton
+              type="button"
+              role="link" // for accessibility
+              onClick={() => {
+                dispatch(hideModal())
+                navigate('/checkout')
+              }}
+            >
+              Proceed to checkout
+            </CustomButton>
           </>
         ) : (
           'Your cart is empty.'

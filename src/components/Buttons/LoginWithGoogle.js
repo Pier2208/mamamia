@@ -37,7 +37,7 @@ const LoginWithGoogleButton = ({ children }) => {
   })
 
   return (
-    <CustomButton {...loginWithGoogleStyle} onClick={signIn}>
+    <CustomButton type="button" {...loginWithGoogleStyle} onClick={signIn}>
       <Icon
         name="google"
         width="1.4rem"

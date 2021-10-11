@@ -1,4 +1,9 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, EDIT_CART } from '../actions/types'
+import {
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  EDIT_CART,
+  RESET_CART
+} from '../actions/types'
 
 // const INITIAL_STATE = {
 //     'Sweet Chili Chicken-M': {
@@ -25,8 +30,10 @@ export default (state = INITIAL_STATE, { type, payload }) => {
         const updateState = {
           ...state
         }
-        updateState[key].quantity = parseInt(updateState[key].quantity) + parseInt(quantity)
-        updateState[key].total = parseInt(updateState[key].quantity) * parseInt(updateState[key].price)
+        updateState[key].quantity =
+          parseInt(updateState[key].quantity) + parseInt(quantity)
+        updateState[key].total =
+          parseInt(updateState[key].quantity) * parseInt(updateState[key].price)
         return {
           ...state
         }
@@ -52,10 +59,14 @@ export default (state = INITIAL_STATE, { type, payload }) => {
         ...state
       }
       updateState[key].quantity = quantity
-      updateState[key].total = parseInt(quantity) * parseInt(updateState[key].price)
+      updateState[key].total =
+        parseInt(quantity) * parseInt(updateState[key].price)
       return {
         ...updateState
       }
+    }
+    case RESET_CART: {
+      return INITIAL_STATE
     }
     default:
       return state
