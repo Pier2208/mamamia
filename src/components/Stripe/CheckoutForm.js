@@ -36,7 +36,6 @@ const CheckoutForm = () => {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads but only if cart is NOT empty
-    if (Object.keys(cart).length) {
       fetch('/.netlify/functions/createPaymentIntent', {
         method: 'POST',
         headers: {
@@ -50,7 +49,6 @@ const CheckoutForm = () => {
         .then(data => {
           setClientSecret(data.clientSecret)
         })
-    }
   }, [cart])
 
   const handleSubmit = async e => {

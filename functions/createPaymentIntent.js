@@ -23,7 +23,7 @@ exports.handler = async (event, context) => {
     // people from directly manipulating the amount on the client
     let total = 0
     for(let item in items) {
-      let subTotal = inventory[item] * items[item].quantity
+      let subTotal = parsetInt(inventory[item]) * parseInt(items[item].quantity)
       total += subTotal
     }
     return total // Stripe requires amount in cents
