@@ -150,8 +150,6 @@ const Header = styled.header`
   background-color: var(--color-primary);
   height: 70px;
   width: 100%;
-  position: fixed;
-  z-index: 1111;
 `
 // partie gauche du header(div verte et blanche)
 const NavbarLeft = styled.div`
@@ -202,7 +200,7 @@ const CartQuantity = styled.span`
   align-items: center;
   background-color: var(--color-secondary);
   color: var(--color-white);
-  font-family: var(--font-form);
+  font-family: var(--font-body);
   font-size: 0.8rem;
 `
 

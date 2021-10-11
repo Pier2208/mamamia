@@ -26,7 +26,6 @@ const Layout = ({ children }) => {
 
 const Main = styled.main`
   margin-top: 0;
-  padding-top: 140px;
 `
 
 export default Layout
