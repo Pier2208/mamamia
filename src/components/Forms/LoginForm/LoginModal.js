@@ -55,7 +55,7 @@ const ForgotPassword = styled.small`
 ///// REACT ////////////////////
 ////////////////////////////////
 
-const QuickLoginModal = props => {
+const LoginModal = props => {
   const dispatch = useDispatch()
 
   /**** FORM */
@@ -113,7 +113,7 @@ const QuickLoginModal = props => {
 
       {/* RESET PASSWORD LINK */}
       <ForgotPassword>
-        <Link to="">I forgot my password</Link>
+        <Link to="/">I forgot my password</Link>
       </ForgotPassword>
 
       <Divider />
@@ -134,4 +134,4 @@ const QuickLoginModal = props => {
   )
 }
 
-export default QuickLoginModal
+export default LoginModal

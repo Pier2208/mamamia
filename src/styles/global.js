@@ -76,7 +76,7 @@ ul {
 
 a {
   text-decoration: none;
-  color: var(--color-grey-dark);
+  color: var(--color-white);
 }
 
 p {

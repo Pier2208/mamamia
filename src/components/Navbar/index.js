@@ -7,6 +7,7 @@ import { LOGIN_MODAL, CART_MODAL } from '../ModalManager/modalTypes'
 import NavLink from './NavLink'
 import Logo from '../Logo'
 import useAuth from '../../hooks/useAuth'
+import { Link } from 'gatsby'
 
 import CircleLoader from '../Spinner/CircleLoader'
 import HiddenCheckbox from './HiddenCheckbox'
@@ -40,7 +41,7 @@ const Navbar = () => {
         </div>
       </NavbarLeft>
       <NavbarMain>
-        <SiteName>Mamamia Pizza</SiteName>
+        <SiteName><Link to="/">Mamamia Pizza</Link></SiteName>
         <HiddenCheckbox id="menu" />
         <Hamburger />
         <Menu>
@@ -89,15 +90,18 @@ const Navbar = () => {
                       <ButtonLink
                         type="button"
                         key={i}
-                        onClick={() =>
-                          dispatch(
-                            showModal(CART_MODAL, {
-                              style: 'cartModal'
-                            })
-                          )
-                        }
+                        onClick={() => {
+                          if (cartQuantity()) {
+                            dispatch(
+                              showModal(CART_MODAL, {
+                                style: 'cartModal'
+                              })
+                            )
+                          }
+                        }}
                         type="button"
                         color={`var(--color-white)`}
+                        isCartEmpty={!cartQuantity()}
                       >
                         {cartQuantity() && (
                           <CartQuantity>{cartQuantity()}</CartQuantity>

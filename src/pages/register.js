@@ -7,7 +7,7 @@ import RegisterForm from '../components/Forms/RegisterForm'
 import media from '../styles/breakpoint'
 import LoginWithGoogleButton from '../components/Buttons/LoginWithGoogle'
 import LoginWithFacebookButton from '../components/Buttons/LoginWithFacebook'
-import SEO from '../components/seo'
+import Seo from '../components/seo'
 
 const Image = styled.div`
 display: none;
@@ -40,7 +40,7 @@ const Register = ({ location }) => {
 
   return (
     <Layout>
-      <SEO title="Create an account" description="Create an account today and order pizza right away!" />
+      <Seo title="Create an account" description="Create an account today and order pizza right away!" />
       <Section>
         <Image>
           <StaticImage

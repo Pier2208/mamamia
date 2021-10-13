@@ -31,6 +31,7 @@ const Name = styled.h2`
   font-size: 40px;
   font-weight: bold;
   margin: 0;
+  color: var(--color-grey-dark);
 `
 
 DishCard.propTypes = {

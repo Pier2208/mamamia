@@ -29,7 +29,7 @@ const BaseToast = styled.div`
     props.genre === 'success'
       ? 'var(--color-secondary)'
       : 'var(--color-primary)'};
-  position: absolute;
+  position: fixed;
   bottom: 1rem;
   left: 1rem;
   right: 1rem;
@@ -47,9 +47,13 @@ const InteractiveIcon = styled(Icon)`
   cursor: pointer;
 `
 
-// les toats sont dispatchés à partir du <Layout />
+// les toasts sont dispatchés à partir du <Layout />
 const Toast = ({ children, genre }) => {
   const dispatch = useDispatch()
+
+  const closeToast = () => {
+    dispatch(hideToast())
+  }
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -57,10 +61,6 @@ const Toast = ({ children, genre }) => {
     }, 3000)
     return () => clearTimeout(timer)
   }, [])
-
-  const closeToast = () => {
-    dispatch(hideToast())
-  }
 
   return (
     <BaseToast genre={genre}>

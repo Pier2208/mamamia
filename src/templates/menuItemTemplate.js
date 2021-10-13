@@ -9,7 +9,7 @@ import Layout from '../components/Layout'
 import MenuLinks from '../components/MenuLinks'
 import { CustomButton } from '../components/Buttons/CustomButtons'
 import media from '../styles/breakpoint'
-import SEO from '../components/seo'
+import Seo from '../components/seo'
 import useAuth from '../hooks/useAuth'
 import { showModal } from '../redux/actions/modalActions'
 import { LOGIN_MODAL } from '../components/ModalManager/modalTypes'
@@ -95,7 +95,7 @@ const MenuItemTemplate = ({ data, pageContext, location }) => {
 
   return (
     <Layout>
-      <SEO title={menuItem.name} description={menuItem.description} />
+      <Seo title={menuItem.name} description={menuItem.description} />
       <MenuLinks />
       <Grid>
         <GatsbyImage
