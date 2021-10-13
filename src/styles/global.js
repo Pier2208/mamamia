@@ -61,11 +61,11 @@ main {
 h1, h2, h3 {
     font-family: var(--font-display);
     letter-spacing: 2px;
+    margin-top: 0;
 }
 
-h1 {
-  font-size: 2rem;
-  margin-top: 0%;;
+h1, h2 {
+  font-size: 2.5rem;
 }
 
 ul {

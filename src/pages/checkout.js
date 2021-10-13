@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
 import CheckoutForm from '../components/Stripe/CheckoutForm'
 import Invoice from '../components/Invoice'
 import media from '../styles/breakpoint'
 import Line from '../components/Line'
+import { navigate } from 'gatsby-link'
 
 const Section = styled.section`
   width: 100%;
@@ -23,6 +25,14 @@ const Grid = styled.div`
 `
 
 const Checkout = () => {
+  const cart = useSelector(state => state.cart)
+  console.log(Object.keys(cart))
+  useEffect(() => {
+    if (Object.keys(cart).length === 0) {
+      navigate('/menu/pizza')
+    }
+  }, [cart])
+
   return (
     <Layout>
       <Section>
