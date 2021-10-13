@@ -55,3 +55,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 }
+
+// the onCreatePage lifecycle hands us every page that is created by Gatsby right after it's created.
+exports.onCreatePage = async ({ page, actions }) => {
+  const { createPage } = actions
+  // Only update the `/user` page.
+  if (page.path.match(/^\/user/)) {
+    // https://www.gatsbyjs.com/docs/gatsby-internals-terminology/#matchpath
+    page.matchPath = '/user/*'
+    // Update the page.
+    createPage(page)
+  }
+
+  if (page.path.match(/^\/reset-password/)) {
+    page.matchPath = '/reset-password/*'
+    createPage(page)
+  }
+}

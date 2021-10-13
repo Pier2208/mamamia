@@ -37,8 +37,6 @@ exports.handler = async (event, context) => {
       currency: 'cad'
     })
 
-    console.log('payment intwnt', paymentIntent)
-
     return {
       statusCode: 200,
       body: JSON.stringify({

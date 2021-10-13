@@ -2,12 +2,12 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 //import modal components
-import QuickLoginModal from '../Forms/LoginForm/QuickLoginModal'
+import LoginModal from '../Forms/LoginForm/LoginModal'
 import Cart from '../Cart'
 
 const MODAL_COMPONENTS = {
-  QUICK_LOGIN_MODAL: QuickLoginModal,
-  CART_MODAL: Cart
+  CART_MODAL: Cart,
+  LOGIN_MODAL: LoginModal
 }
 
 // ModalManager reads from the redux store the type of modal to open and its associated style

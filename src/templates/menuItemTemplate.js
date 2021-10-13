@@ -10,6 +10,9 @@ import MenuLinks from '../components/MenuLinks'
 import { CustomButton } from '../components/Buttons/CustomButtons'
 import media from '../styles/breakpoint'
 import SEO from '../components/seo'
+import useAuth from '../hooks/useAuth'
+import { showModal } from '../redux/actions/modalActions'
+import { LOGIN_MODAL } from '../components/ModalManager/modalTypes'
 
 // REDUX ACTIONS
 import { addToCart } from '../redux/actions/cartActions'
@@ -49,9 +52,9 @@ const Select = styled.select`
 `
 
 const MenuItemTemplate = ({ data, pageContext, location }) => {
-
   const dispatch = useDispatch(addToCart())
-  
+  const isAuth = useAuth()
+
   // get all the data about a menu item
   const menuItem = data.menuItem
 
@@ -69,16 +72,25 @@ const MenuItemTemplate = ({ data, pageContext, location }) => {
   const handleAddToCart = e => {
     e.preventDefault()
 
-    const myPizza = {
-      key: `${menuItem.name}-${format.size}`,
-      name: menuItem.name,
-      ...format,
-      quantity,
-      image: menuItem.image.gatsbyImageData,
-      total: quantity * format.price
-    }
+    // if user not auth, when he clicks on add to cart, show login modal
+    if (!isAuth) {
+      dispatch(
+        showModal(LOGIN_MODAL, {
+          style: 'loginModal'
+        })
+      )
+    } else {
+      const myPizza = {
+        key: `${menuItem.name}-${format.size}`,
+        name: menuItem.name,
+        ...format,
+        quantity,
+        image: menuItem.image.gatsbyImageData,
+        total: quantity * format.price
+      }
 
-    dispatch(addToCart(myPizza))
+      dispatch(addToCart(myPizza))
+    }
   }
 
   return (
@@ -99,7 +111,12 @@ const MenuItemTemplate = ({ data, pageContext, location }) => {
           <form onSubmit={handleAddToCart}>
             <FormGroup>
               <label htmlFor="size">Select size: </label>
-              <Select id="size" name="size" value={format.size} onChange={(e) => setPizzaSizeAndPrice(e.target.value)}>
+              <Select
+                id="size"
+                name="size"
+                value={format.size}
+                onChange={e => setPizzaSizeAndPrice(e.target.value)}
+              >
                 {menuItem.size.map(size => (
                   <option key={size.size} value={size.size}>
                     {size.size} - ${size.price}
@@ -109,7 +126,12 @@ const MenuItemTemplate = ({ data, pageContext, location }) => {
             </FormGroup>
             <FormGroup>
               <label htmlFor="quantity">Quantity: </label>
-              <Select id="quantity" name="quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)}>
+              <Select
+                id="quantity"
+                name="quantity"
+                value={quantity}
+                onChange={e => setQuantity(e.target.value)}
+              >
                 {Array.from({ length: 20 }, (_, i) => i + 1).map(n => (
                   <option key={n} value={n}>
                     {n}

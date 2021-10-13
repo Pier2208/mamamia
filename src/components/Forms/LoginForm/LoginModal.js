@@ -83,6 +83,7 @@ const QuickLoginModal = props => {
     <Modal type={props.style}>
       {/* MAIN LOGIN FORM */}
       <Form onSubmit={handleFormSubmit}>
+        {props.style === 'loginModal' && <h2>Log in to your account first</h2>}
         <Input
           type="email"
           id="email"

@@ -65,7 +65,11 @@ const Cart = props => {
               role="link" // for accessibility
               onClick={() => {
                 dispatch(hideModal())
-                navigate('/checkout')
+                navigate('/user/checkout', {
+                  state: {
+                    prevPath: 'cart'
+                  }
+                })
               }}
             >
               Proceed to checkout

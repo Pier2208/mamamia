@@ -9,6 +9,7 @@ import Icon from '../Icon'
 // REDUX ACTIONS
 import { loginWithFacebook } from '../../redux/actions/userActions'
 import { hideModal } from '../../redux/actions/modalActions'
+import { navigate } from 'gatsby-link'
 
 const inputStyle = {
   fontSize: '1rem',
@@ -22,7 +23,7 @@ const loginWithFacebookStyle = {
   color: 'var(--color-white)'
 }
 
-const LoginWithFacebookButton = ({ children }) => {
+const LoginWithFacebookButton = ({ children, location }) => {
   const dispatch = useDispatch()
 
   const responseFacebook = response => {
@@ -30,6 +31,8 @@ const LoginWithFacebookButton = ({ children }) => {
     if (response.status === 'unknown') return
     dispatch(loginWithFacebook(response))
     dispatch(hideModal())
+    // if the user looged in from /register, redirect him - else he might login via the modal, do not redirect him
+    if (location === '/register') navigate('/')
   }
 
   return (
@@ -39,7 +42,11 @@ const LoginWithFacebookButton = ({ children }) => {
       fields="id,email"
       callback={responseFacebook}
       render={renderProps => (
-        <CustomButton type="button" {...loginWithFacebookStyle} onClick={renderProps.onClick}>
+        <CustomButton
+          type="button"
+          {...loginWithFacebookStyle}
+          onClick={renderProps.onClick}
+        >
           <Icon
             name="facebook"
             width="1.4rem"

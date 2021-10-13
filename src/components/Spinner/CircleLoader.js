@@ -98,14 +98,14 @@ const Dot = styled.div`
     margin: 0 auto;
     width: 15%;
     height: 15%;
-    background-color: var(--color-white);
+    background-color: ${props => props.color || 'var(--color-white)'};
     border-radius: 100%;
     animation: ${circleBounceDelay} 1.2s infinite ease-in-out both;
   }
 `
 
-const CircleLoader = () => (
-  <CircleMain>
+const CircleLoader = ({ color }) => (
+  <CircleMain color={color}>
     {[...new Array(12)].map((_, i) => (
       <Dot key={i} />
     ))}

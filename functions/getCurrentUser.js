@@ -25,8 +25,8 @@ exports.handler = async (event, context) => {
 
   try {
     // get user info
-    // Identity() returns a ref associated with the authentication token
-    const { data } = await client.query(q.Get(q.Identity()))
+    // Identity() returns a ref associated with the authentication token or throw an error
+    const { data } = await client.query(q.Get(q.CurrentIdentity()))
     if (data) {
       return {
         statusCode: 200,

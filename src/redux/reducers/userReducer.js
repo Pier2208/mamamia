@@ -7,7 +7,7 @@ import {
 } from '../actions/types'
 
 const INITIAL_STATE = {
-  isAuthenticated: false,
+  isAuthenticated: null, // we don't know the auth status until getCurrentUser has returned
   email: ''
 }
 
@@ -38,7 +38,10 @@ export default (state = INITIAL_STATE, { type, payload }) => {
         isAuthenticated: payload.isAuthenticated
       }
     case LOGOUT_USER:
-      return INITIAL_STATE
+      return {
+        isAuthenticated: false,
+        email: ''
+      }
     default:
       return state
   }

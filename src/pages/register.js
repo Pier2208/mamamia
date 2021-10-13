@@ -36,7 +36,8 @@ const SocialLogins = styled.div`
   max-width: 400px;
 `
 
-const Register = () => {
+const Register = ({ location }) => {
+
   return (
     <Layout>
       <SEO title="Create an account" description="Create an account today and order pizza right away!" />
@@ -56,8 +57,8 @@ const Register = () => {
           <RegisterForm />
           <Divider />
           <SocialLogins>
-            <LoginWithGoogleButton>Register with Google</LoginWithGoogleButton>
-            <LoginWithFacebookButton>Register with Facebook</LoginWithFacebookButton>
+            <LoginWithGoogleButton location={location.pathname}>Register with Google</LoginWithGoogleButton>
+            <LoginWithFacebookButton location={location.pathname}>Register with Facebook</LoginWithFacebookButton>
           </SocialLogins>
         </div>
       </Section>

@@ -35,7 +35,25 @@ const ModalStyle = styled.div`
       `
     }
 
-    if(type === 'cartModal') {
+    if (type === 'loginModal') {
+      return css`
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        background-color: var(--color-white);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 2px 2px 15px rgba(79, 81, 80, 0.1);
+        width: 500px;
+        z-index: 1111;
+        text-align: center;
+      `
+    }
+
+    if (type === 'cartModal') {
       return css`
         position: absolute;
         top: 70px;

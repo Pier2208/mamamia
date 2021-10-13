@@ -13,6 +13,11 @@ export const registerUser =
   ({ email, password }) =>
   async dispatch => {
     try {
+      dispatch({
+        type: SET_LOADING,
+        payload: true
+      })
+
       const reqOptions = {
         method: 'POST',
         headers: {
@@ -31,6 +36,10 @@ export const registerUser =
       dispatch({
         type: REGISTER_USER,
         payload: data
+      })
+      dispatch({
+        type: SET_LOADING,
+        payload: false
       })
       dispatch({
         type: SHOW_TOAST,
@@ -74,6 +83,14 @@ export const getCurrentUser = () => async dispatch => {
       payload: false
     })
   } catch (err) {
+    // fauna throws an error if getCurrentUser does not exist, thus we dispatch action manuallt to set set isAuth to false
+    dispatch({
+      type: SET_CURRENT_USER,
+      payload: {
+        user: { email: '' },
+        isAuthenticated: false
+      }
+    })
     dispatch({
       type: SET_LOADING,
       payload: false
@@ -85,6 +102,11 @@ export const loginUser =
   ({ email, password }) =>
   async dispatch => {
     try {
+      dispatch({
+        type: SET_LOADING,
+        payload: true
+      })
+
       const reqOptions = {
         method: 'POST',
         body: JSON.stringify({
@@ -100,13 +122,16 @@ export const loginUser =
         payload: data
       })
       dispatch({
+        type: SET_LOADING,
+        payload: false
+      })
+      dispatch({
         type: SHOW_TOAST,
         payload: {
           genre: 'success',
           message: 'You are now logged in.'
         }
       })
-      navigate('/')
     } catch (err) {
       console.log(err)
       throw err
@@ -115,6 +140,11 @@ export const loginUser =
 
 export const logoutUser = () => async dispatch => {
   try {
+    dispatch({
+      type: SET_LOADING,
+      payload: true
+    })
+
     const reqOptions = {
       method: 'GET'
     }
@@ -133,6 +163,10 @@ export const logoutUser = () => async dispatch => {
           message: 'You are now logged out.'
         }
       })
+      dispatch({
+        type: SET_LOADING,
+        payload: false
+      })
       navigate('/')
     }
   } catch (err) {
@@ -142,6 +176,11 @@ export const logoutUser = () => async dispatch => {
 
 export const loginWithGoogle = googleResponse => async dispatch => {
   try {
+    dispatch({
+      type: SET_LOADING,
+      payload: true
+    })
+
     const reqOptions = {
       method: 'POST',
       body: JSON.stringify({
@@ -158,13 +197,16 @@ export const loginWithGoogle = googleResponse => async dispatch => {
       payload: data
     })
     dispatch({
+      type: SET_LOADING,
+      payload: false
+    })
+    dispatch({
       type: SHOW_TOAST,
       payload: {
         genre: 'success',
         message: 'You are now logged in.'
       }
     })
-    navigate('/')
   } catch (err) {
     console.log(err)
   }
@@ -195,7 +237,6 @@ export const loginWithFacebook = facebookResponse => async dispatch => {
         message: 'You are now logged in.'
       }
     })
-    navigate('/')
   } catch (err) {
     console.log(err)
   }

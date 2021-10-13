@@ -1,11 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { logoutUser } from '../../redux/actions/userActions'
 import { showModal } from '../../redux/actions/modalActions'
-import { QUICK_LOGIN_MODAL, CART_MODAL } from '../ModalManager/modalTypes'
+import { LOGIN_MODAL, CART_MODAL } from '../ModalManager/modalTypes'
 import NavLink from './NavLink'
 import Logo from '../Logo'
+import useAuth from '../../hooks/useAuth'
 
 import CircleLoader from '../Spinner/CircleLoader'
 import HiddenCheckbox from './HiddenCheckbox'
@@ -17,7 +18,7 @@ import mainLinks from '../../constants/main-links'
 import { ButtonLink } from '../Buttons/CustomButtons'
 
 const Navbar = () => {
-  const { isAuthenticated } = useSelector(state => state.user)
+  const isAuth = useAuth()
   const { loading } = useSelector(state => state.ui)
   const cart = useSelector(state => state.cart)
   const dispatch = useDispatch()
@@ -67,9 +68,11 @@ const Navbar = () => {
               <CircleLoader />
             ) : (
               authLinks.map((link, i) => {
-                if (isAuthenticated && link.private) {
+                if (isAuth && link.private) {
                   if (link.name === 'Logout') {
-                    return (
+                    return loading ? (
+                      <CircleLoader />
+                    ) : (
                       <ButtonLink
                         type="button"
                         key={i}
@@ -116,14 +119,17 @@ const Navbar = () => {
                       {link.name}
                     </NavLink>
                   )
-                } else if (!isAuthenticated && !link.private) {
-                  return (
+                } else if (!isAuth && !link.private) {
+                  return loading ? (
+                    <CircleLoader />
+                  ) : (
+                    // LOGIN BUTTON
                     <ButtonLink
                       type="button"
                       key={i}
                       onClick={() =>
                         dispatch(
-                          showModal(QUICK_LOGIN_MODAL, {
+                          showModal(LOGIN_MODAL, {
                             style: 'quickLoginModal'
                           })
                         )

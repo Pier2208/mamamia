@@ -1,5 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
+import { navigate } from 'gatsby-link'
 
 // COMPONENTS
 import { useGoogleLogin } from 'react-google-login'
@@ -19,7 +20,7 @@ const loginWithGoogleStyle = {
   border: '1px solid var(--color-grey-dark)'
 }
 
-const LoginWithGoogleButton = ({ children }) => {
+const LoginWithGoogleButton = ({ children, location }) => {
   const dispatch = useDispatch()
 
   const responseGoogle = response => {
@@ -27,6 +28,8 @@ const LoginWithGoogleButton = ({ children }) => {
     if (response.error) return
     dispatch(loginWithGoogle(response))
     dispatch(hideModal())
+    // if the user looged in from /register, redirect him - else he might login via the modal, do not redirect him
+    if (location === '/register') navigate('/')
   }
 
   const { signIn } = useGoogleLogin({
