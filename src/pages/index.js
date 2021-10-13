@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { StaticImage } from 'gatsby-plugin-image'
 import Layout from '../components/Layout'
 import media from '../styles/breakpoint'
+import Banner from '../components/Banner'
 
 const HeroSection = styled.section`
   width: 100%;
@@ -26,6 +27,20 @@ const HeroText = styled.div`
   }
 `
 
+const BannerTitle = styled.h2`
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  color: var(--color-white);
+  font-weight: bold;
+`
+
+const BannerCatchline = styled.p`
+  font-family: var(--font-body);
+  color: var(--color-white);
+  font-size: 1.8rem;
+`
+
+
 const Home = () => {
   return (
     <Layout>
@@ -47,11 +62,11 @@ const Home = () => {
             aliquip ex ea commodo consequat.
           </p>
           <StaticImage
-          src="../assets/images/Certificate-of-excellence-2019-Tripadvisor.png"
-          alt="Tripadvisor Certificate of excellence 2019."
-          placeholder="blurred"
-          width={100}
-        />
+            src="../assets/images/Certificate-of-excellence-2019-Tripadvisor.png"
+            alt="Tripadvisor Certificate of excellence 2019."
+            placeholder="blurred"
+            width={100}
+          />
         </HeroText>
 
         {/* Hero 2nd row */}
@@ -71,6 +86,12 @@ const Home = () => {
           width={350}
         />
       </HeroSection>
+
+      {/* Banner */}
+      <Banner>
+        <BannerTitle>Save your cash</BannerTitle>
+        <BannerCatchline>Free delivery for all orders over $40!</BannerCatchline>
+      </Banner>
     </Layout>
   )
 }

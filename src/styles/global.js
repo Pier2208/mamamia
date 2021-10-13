@@ -24,6 +24,8 @@ const GlobalStyle = createGlobalStyle`
     --spacing-m: 1.5rem;
     --spacing-l: 3rem;
 
+    --maxWidth: 1200px;
+
   // Adaptation de la police
   @media (min-width: 500px) {
     :root {
@@ -52,7 +54,7 @@ body {
   }
 
 main {
-  max-width: 1200px;
+  max-width: var(--maxWidth);
   margin-left: auto;
   margin-right: auto;
   min-height: 100vh;
