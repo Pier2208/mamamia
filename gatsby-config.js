@@ -3,8 +3,10 @@ require('dotenv').config()
 module.exports = {
   siteMetadata: {
     title: `Mamamia Pizza`,
-    description: `The best pizza in town.`,
-    author: `Pierrick Le Roy`
+    description: `A large choice of pizza, burgers, salads and pasta. Mamamia! Simply the best choice in town!`,
+    author: `Pierrick Le Roy`,
+    keywords: 'pizza, burger, salad, pasta, pizzeria, Montréal',
+    image: `src/assets/images/chef.png`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

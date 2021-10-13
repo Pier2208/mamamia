@@ -7,6 +7,7 @@ import Invoice from '../components/Invoice'
 import media from '../styles/breakpoint'
 import Line from '../components/Line'
 import { navigate } from 'gatsby-link'
+import SEO from '../components/seo'
 
 const Section = styled.section`
   width: 100%;
@@ -26,7 +27,7 @@ const Grid = styled.div`
 
 const Checkout = () => {
   const cart = useSelector(state => state.cart)
-  console.log(Object.keys(cart))
+
   useEffect(() => {
     if (Object.keys(cart).length === 0) {
       navigate('/menu/pizza')
@@ -35,6 +36,7 @@ const Checkout = () => {
 
   return (
     <Layout>
+      <SEO title="Checkout" />
       <Section>
         <h2>Your invoice</h2>
         <p>Please review your invoice and confirm payment. Thank you!</p>

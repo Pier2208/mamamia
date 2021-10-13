@@ -9,6 +9,7 @@ import Layout from '../components/Layout'
 import MenuLinks from '../components/MenuLinks'
 import { CustomButton } from '../components/Buttons/CustomButtons'
 import media from '../styles/breakpoint'
+import SEO from '../components/seo'
 
 // REDUX ACTIONS
 import { addToCart } from '../redux/actions/cartActions'
@@ -82,6 +83,7 @@ const MenuItemTemplate = ({ data, pageContext, location }) => {
 
   return (
     <Layout>
+      <SEO title={menuItem.name} description={menuItem.description} />
       <MenuLinks />
       <Grid>
         <GatsbyImage

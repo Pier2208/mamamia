@@ -5,6 +5,8 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import DishCard from '../components/DishCard'
 import MenuLinks from '../components/MenuLinks'
+import SEO from '../components/seo'
+import { capitalize } from '../utility/functions'
 
 const Grid = styled.section`
   width: 100%;
@@ -30,6 +32,7 @@ const menuCategoryTemplate = ({ data, pageContext, location }) => {
   const categoryDescription = data.dishes.nodes[0].description.description
   return (
     <Layout>
+      <SEO title={capitalize(pageContext.category)} description={categoryDescription} />
       <Header>
         <MenuLinks />
         <p>{categoryDescription}</p>

@@ -4,6 +4,7 @@ import { StaticImage } from 'gatsby-plugin-image'
 import Layout from '../components/Layout'
 import media from '../styles/breakpoint'
 import Banner from '../components/Banner'
+import SEO from '../components/seo'
 
 const HeroSection = styled.section`
   width: 100%;
@@ -44,6 +45,7 @@ const BannerCatchline = styled.p`
 const Home = () => {
   return (
     <Layout>
+      <SEO title="Home" />
       <HeroSection>
         {/* Hero 1st row */}
         <StaticImage
