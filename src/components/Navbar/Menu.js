@@ -7,12 +7,15 @@ import media from '../../styles/breakpoint'
 const Menu = styled.nav`
   // full screen menu on small screen is hidden until hidden checkbox is checked
   position: absolute;
-  top: 0;
+  top: 70px;
   left: 0;
+  bottom: 0;
+  right: 0;
   width: 100vw;
   height: 100vh;
   background-color: var(--color-primary);
   opacity: 0;
+  z-index:111;
 
   // remove all previous styles above breakpoint small
   ${media.s`

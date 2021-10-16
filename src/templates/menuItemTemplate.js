@@ -72,6 +72,15 @@ const MenuItemTemplate = ({ data, pageContext, location }) => {
   const handleAddToCart = e => {
     e.preventDefault()
 
+    const myPizza = {
+      key: `${menuItem.name}-${format.size}`,
+      name: menuItem.name,
+      ...format,
+      quantity,
+      image: menuItem.image.gatsbyImageData,
+      total: quantity * format.price
+    }
+
     // if user not auth, when he clicks on add to cart, show login modal
     if (!isAuth) {
       dispatch(
@@ -80,15 +89,6 @@ const MenuItemTemplate = ({ data, pageContext, location }) => {
         })
       )
     } else {
-      const myPizza = {
-        key: `${menuItem.name}-${format.size}`,
-        name: menuItem.name,
-        ...format,
-        quantity,
-        image: menuItem.image.gatsbyImageData,
-        total: quantity * format.price
-      }
-
       dispatch(addToCart(myPizza))
     }
   }

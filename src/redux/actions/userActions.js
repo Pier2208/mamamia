@@ -6,7 +6,8 @@ import {
   SET_LOADING,
   SHOW_TOAST,
   SOCIAL_LOGIN,
-  LOGIN_USER
+  LOGIN_USER,
+  RESET_CART
 } from './types'
 
 export const registerUser =
@@ -162,6 +163,9 @@ export const logoutUser = () => async dispatch => {
           genre: 'success',
           message: 'You are now logged out.'
         }
+      })
+      dispatch({
+        type: RESET_CART
       })
       dispatch({
         type: SET_LOADING,

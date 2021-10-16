@@ -54,10 +54,6 @@ const Navbar = () => {
                     key={i}
                     to={link.path}
                     color={'var(--color-white)'}
-                    activeStyle={{
-                      fontWeight: 'bold',
-                      textDecoration: 'underline'
-                    }}
                   >
                     {link.name}
                   </NavLink>
