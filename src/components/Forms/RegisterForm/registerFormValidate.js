@@ -1,3 +1,5 @@
+// regex: https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
+
 const registerFormValidate = values => {
     let errors = {}
   
@@ -7,8 +9,9 @@ const registerFormValidate = values => {
     if (!values.email) {
       errors.email = 'Email is required'
     }
-    if (values.password.length < 8) {
-      errors.password = 'Password must be at least 8 characters'
+    // Minimum eight characters, at least one uppercase letter, one lowercase letter and one number
+    if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(values.email)) {
+      errors.password = 'Password does not meet the minimum requirement'
     }
     if (!values.password) {
       errors.password = 'Password is required'

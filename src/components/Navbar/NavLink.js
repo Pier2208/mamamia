@@ -14,13 +14,13 @@ const NavLink = ({ to, children, color, activeStyle, partiallyActive }) => {
 
 const StyledLink = styled(Link)`
   font-size: 3rem;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   cursor: pointer;
   color: ${({ color}) => color || 'var(--color-grey-dark)'}; // get the color passed into the component props
 
 
   ${media.s`
-  font-size: 2.3rem;
+  font-size: 1.5rem;
   `}
 `
 

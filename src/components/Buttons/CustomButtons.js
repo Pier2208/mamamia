@@ -1,11 +1,12 @@
 import styled from 'styled-components'
+import media from '../../styles/breakpoint'
 
 export const CustomButton = styled.button`
   background-color: ${props => props.bgColor || 'var(--color-secondary)'};
   color: ${props => props.color || 'var(--color-white)'};
   outline: none;
   border: ${props => props.border || 'none'};
-  font-family: var(--font-form);
+  font-family: var(--font-body);
   font-weight: bold;
   font-size: ${props => props.fontSize || '1.5rem'};
   text-transform: uppercase;
@@ -19,8 +20,8 @@ export const CustomButton = styled.button`
   position: relative;
 `
 export const ButtonLink = styled.button`
-  font-size: 2.3rem;
-  font-family: var(--font-display);
+  font-size: 3rem;
+  font-family: var(--font-body);
   cursor: pointer;
   border: none;
   outline: none;
@@ -29,4 +30,8 @@ export const ButtonLink = styled.button`
     color ||
     'var(--color-grey-dark)'}; // get the color passed into the component props
   position: relative;
+
+  ${media.s`
+  font-size: 1.5rem;
+  `}
 `

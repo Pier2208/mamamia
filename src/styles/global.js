@@ -98,13 +98,6 @@ button {
   width: 1px;
 }
 
-.center-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
 img {
   display: block;
   max-width: 100%;
@@ -125,7 +118,7 @@ header + *, ul + *  {
   margin-top: var(--spacing-l);
 }
 
-p + *, button + *, div + button, article + article {
+p + *, div + button, article + article {
   margin-top: var(--spacing-m);
 }
 

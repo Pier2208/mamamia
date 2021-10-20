@@ -23,7 +23,7 @@ exports.handler = async (event, context) => {
     const secretCookie = cookie.serialize('st', secret, {
       httpOnly: true,
       path: '/', // mandatory to see the cookie in devtools
-      // secure: true // will block the cookie if sent over a not secured connexion
+      secure: true // will block the cookie if sent over a not secured connexion
     })
 
     return {

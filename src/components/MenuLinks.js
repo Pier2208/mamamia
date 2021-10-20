@@ -18,6 +18,7 @@ const MenuLink = styled.li`
   align-items: flex-start;
   justify-content: flex-end;
   margin-right: var(--spacing-l);
+  
 `
 
 const MenuLinks = () => {
@@ -31,6 +32,7 @@ const MenuLinks = () => {
               <NavLink
                 to={link.path}
                 color={'var(--color-grey-dark)'}
+                
                 activeStyle={{
                   color: 'var(--color-primary)',
                   fontWeight: 'bold',

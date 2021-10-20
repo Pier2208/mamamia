@@ -10,21 +10,34 @@ import LoginWithFacebookButton from '../components/Buttons/LoginWithFacebook'
 import Seo from '../components/seo'
 
 const Image = styled.div`
-display: none;
+  display: none;
+  justify-self: end;
 `
 const Section = styled.section`
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.05);
   width: 100%;
   margin-top: var(--spacing-l);
   display: grid;
-  justify-items: center;
-  column-gap: 2rem;
+  column-gap: var(--spacing-l);
+  padding: 6rem 0;
 
   ${media.m`
   grid-template-columns: repeat(2, 1fr);
   ${Image} {
       display: block;
   }
+  ${CreateAccount} {
+    justify-self: start;
+  }
   `}
+`
+
+const CreateAccount = styled.div`
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `
 
 const SocialLogins = styled.div`
@@ -37,30 +50,36 @@ const SocialLogins = styled.div`
 `
 
 const Register = ({ location }) => {
-
   return (
     <Layout>
-      <Seo title="Create an account" description="Create an account today and order pizza right away!" />
+      <Seo
+        title="Create an account"
+        description="Create an account today and order pizza right away!"
+      />
       <Section>
         <Image>
           <StaticImage
             src="../assets/images/register.jpg"
             alt="Register an account."
             placeholder="tracedSVG"
-            width={500}
-            height={800}
+            width={400}
+            height={550}
             imgStyle={{ borderRadius: '10px' }}
           />
         </Image>
-        <div className="center-content">
+        <CreateAccount>
           <h1>Create an account</h1>
           <RegisterForm />
           <Divider />
           <SocialLogins>
-            <LoginWithGoogleButton location={location.pathname}>Register with Google</LoginWithGoogleButton>
-            <LoginWithFacebookButton location={location.pathname}>Register with Facebook</LoginWithFacebookButton>
+            <LoginWithGoogleButton location={location.pathname}>
+              Register with Google
+            </LoginWithGoogleButton>
+            <LoginWithFacebookButton location={location.pathname}>
+              Register with Facebook
+            </LoginWithFacebookButton>
           </SocialLogins>
-        </div>
+        </CreateAccount>
       </Section>
     </Layout>
   )

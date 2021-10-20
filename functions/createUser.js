@@ -70,7 +70,7 @@ exports.handler = async (event, context) => {
       // no expires = most clients will consider this a "non-persistent cookie" and will delete it on a condition like exiting a web browser application.
       httpOnly: false,
       path: '/', // mandatory to see the cookie in devtools
-      //secure: true // will block the cookie if sent over a not secured connexion
+      secure: true // will block the cookie if sent over a not secured connexion
     })
 
     return {
