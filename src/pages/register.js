@@ -13,6 +13,15 @@ const Image = styled.div`
   display: none;
   justify-self: end;
 `
+
+const CreateAccount = styled.div`
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+
 const Section = styled.section`
   box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.05);
   width: 100%;
@@ -30,14 +39,6 @@ const Section = styled.section`
     justify-self: start;
   }
   `}
-`
-
-const CreateAccount = styled.div`
-  justify-self: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 `
 
 const SocialLogins = styled.div`
