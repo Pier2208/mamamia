@@ -22,6 +22,13 @@ const CreateAccount = styled.div`
   justify-content: center;
 `
 
+const FormTitle = styled.h1`
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.8rem;
+  margin-bottom: 3rem;
+`
+
 const Section = styled.section`
   box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.05);
   width: 100%;
@@ -48,6 +55,10 @@ const SocialLogins = styled.div`
   justify-content: center;
   width: 100%;
   max-width: 400px;
+
+  & > *:first-child {
+    margin-bottom: var(--spacing-m);
+  }
 `
 
 const Register = ({ location }) => {
@@ -69,7 +80,7 @@ const Register = ({ location }) => {
           />
         </Image>
         <CreateAccount>
-          <h1>Create an account</h1>
+          <FormTitle>Create an account</FormTitle>
           <RegisterForm />
           <Divider />
           <SocialLogins>

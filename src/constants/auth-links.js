@@ -5,12 +5,6 @@ const authLinks = [
     type: 'button'
   },
   {
-    path: '/account',
-    name: 'Account',
-    private: true,
-    type: 'link'
-  },
-  {
     name: 'Cart',
     private: true,
     type: 'button'

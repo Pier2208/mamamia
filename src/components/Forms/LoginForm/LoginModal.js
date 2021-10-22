@@ -51,6 +51,15 @@ const ForgotPassword = styled.small`
   text-decoration: underline;
 `
 
+const Actions = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  & > *:not(:first-child) {
+    margin-top: 1.5rem;
+  }
+`
+
 /////////////////////////////////
 ///// REACT ////////////////////
 ////////////////////////////////
@@ -119,17 +128,19 @@ const LoginModal = props => {
       <Divider />
 
       {/* LOGIN WITH GOOGLE */}
-      <LoginWithGoogleButton>Login with Google</LoginWithGoogleButton>
-      <LoginWithFacebookButton>Login with Facebook</LoginWithFacebookButton>
-      <Link to="/register">
-        <CustomButton
-          type="button"
-          {...registerButtonStyle}
-          onClick={() => dispatch(hideModal())}
-        >
-          Create an account
-        </CustomButton>
-      </Link>
+      <Actions>
+        <LoginWithGoogleButton>Login with Google</LoginWithGoogleButton>
+        <LoginWithFacebookButton>Login with Facebook</LoginWithFacebookButton>
+        <Link to="/register">
+          <CustomButton
+            type="button"
+            {...registerButtonStyle}
+            onClick={() => dispatch(hideModal())}
+          >
+            Create an account
+          </CustomButton>
+        </Link>
+      </Actions>
     </Modal>
   )
 }
