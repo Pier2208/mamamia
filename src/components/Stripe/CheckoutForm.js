@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 import CardField from './CardField'
 import Field from './Field'
@@ -9,6 +10,11 @@ import { useElements, useStripe, CardElement } from '@stripe/react-stripe-js'
 
 // REDUX ACTIONS
 import { resetCart } from '../../redux/actions/cartActions'
+
+const TestCard = styled.small`
+font-size: 0.7rem;
+color: #a3a3a3;
+`
 
 const CheckoutForm = () => {
   const cart = useSelector(state => state.cart)
@@ -168,6 +174,7 @@ const CheckoutForm = () => {
       {/* 2eme group d'inputs */}
       <Fieldset>
         <CardField />
+        <TestCard>*Try this test card: 4000 0012 4000 0000</TestCard>
       </Fieldset>
       {error && <ErrorMessage>{error.message}</ErrorMessage>}
       <SubmitButton processing={processing} error={error} disabled={!stripe}>
