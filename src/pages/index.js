@@ -1,10 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import { StaticImage } from 'gatsby-plugin-image'
+import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import media from '../styles/breakpoint'
 import Banner from '../components/Banner'
 import Seo from '../components/seo'
+import DishCard from '../components/DishCard'
+import PopularChoices from '../components/PopularChoices'
 
 const HeroSection = styled.section`
   width: 100%;
@@ -41,8 +44,51 @@ const BannerCatchline = styled.p`
   font-size: 1.8rem;
 `
 
+export const query = graphql`
+  query PopularPizzaQuery {
+    pizza: allContentfulMenuItem(
+      filter: { category: { name: { eq: "pizza" } } }
+      limit: 3
+    ) {
+      nodes {
+        name
+        image {
+          gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+        }
+        slug
+      }
+    }
 
-const Home = () => {
+    burgers: allContentfulMenuItem(
+      filter: { category: { name: { eq: "burgers" } } }
+      limit: 3
+    ) {
+      nodes {
+        name
+        image {
+          gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+        }
+        slug
+      }
+    }
+
+    pasta: allContentfulMenuItem(
+      filter: { category: { name: { eq: "pasta" } } }
+      limit: 3
+    ) {
+      nodes {
+        name
+        image {
+          gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+        }
+        slug
+      }
+    }
+  }
+`
+
+const Home = ({ data: { pizza, pasta,  burgers }}) => {
+
   return (
     <Layout>
       <Seo title="Home" />
@@ -92,8 +138,31 @@ const Home = () => {
       {/* Banner */}
       <Banner>
         <BannerTitle>Save your cash</BannerTitle>
-        <BannerCatchline>Free delivery for all orders over $40!</BannerCatchline>
+        <BannerCatchline>
+          Free delivery for all orders over $40!
+        </BannerCatchline>
       </Banner>
+
+      {/* Popular Choices: Pizza */}
+      <PopularChoices title="Popular Pizza">
+        {pizza.nodes.map(dish => (
+          <DishCard dish={dish} location={'/menu/pizza'} />
+        ))}
+      </PopularChoices>
+
+      {/* Popular Choices: Pasta */}
+      <PopularChoices title="Popular Pasta">
+        {pasta.nodes.map(dish => (
+          <DishCard dish={dish} location={'/menu/pasta'} />
+        ))}
+      </PopularChoices>
+
+      {/* Popular Choices: Burgers */}
+      <PopularChoices title="We also make delicious burgers!">
+        {burgers.nodes.map(dish => (
+          <DishCard dish={dish} location={'/menu/burgers'} />
+        ))}
+      </PopularChoices>
     </Layout>
   )
 }
