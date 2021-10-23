@@ -28,6 +28,12 @@ const Form = styled.form`
     margin-top: var(--spacing-m);
   }
 `
+
+const Title = styled.h2`
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.8rem;
+`
 const inputStyle = {
   fontSize: '1rem',
   padding: '0.5rem'
@@ -92,7 +98,9 @@ const LoginModal = props => {
     <Modal type={props.style}>
       {/* MAIN LOGIN FORM */}
       <Form onSubmit={handleFormSubmit}>
-        {props.style === 'loginModal' && <h2>Log in to your account first</h2>}
+        {props.style === 'loginModal' && (
+          <Title>Log in to your account first</Title>
+        )}
         <Input
           type="email"
           id="email"
