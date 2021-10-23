@@ -25,6 +25,10 @@ const Grid = styled.div`
   `}
 `
 
+const Title = styled.h2`
+  font-family: var(--font-body);
+`
+
 const Checkout = () => {
   const cart = useSelector(state => state.cart)
 
@@ -38,7 +42,7 @@ const Checkout = () => {
     <Layout>
       <Seo title="Checkout" />
       <Section>
-        <h2>Your invoice</h2>
+        <Title>Your invoice</Title>
         <p>Please review your invoice and confirm payment. Thank you!</p>
         <Line />
         <Grid>
